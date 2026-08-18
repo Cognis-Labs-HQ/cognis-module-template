@@ -30,7 +30,9 @@
   "homepage": "https://github.com/Cognis-Labs-HQ/cognis-module-template#readme",
   "support": "https://github.com/Cognis-Labs-HQ/cognis-module-template/issues",
   "assets": {
-    "screenshots": [],
+    "screenshots": [
+        "assets/screenshots/cognis-logo.png"
+    ],
     "icon": "assets/icon.svg",
     "banner": "assets/banner.svg"
   },
@@ -83,6 +85,10 @@
     {
       "path": "assets/icon.svg",
       "sha256": "a71eb90ae9528834d16f9fc401d3e98a395da601c149f0c740cb20128ec6c364"
+    },
+    {
+      "path": "assets/screenshots/cognis-logo.png",
+      "sha256": "4ef4d3f734ba671cb380be4c3eac9297ffdb70775a93109257bcd80d0c4dc3e1"
     },
     {
       "path": "bootstrap.js",
