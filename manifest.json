@@ -4,6 +4,7 @@
   "name": "Module Template",
   "version": "1.0.0",
   "class": "extension",
+  "template": "true",
   "coreApiVersion": "v1",
   "capabilities": [
     "showcase:listItems"
