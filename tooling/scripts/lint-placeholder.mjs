@@ -1,13 +1,7 @@
-import { spawnSync } from "node:child_process";
+import { execSync } from "node:child_process";
 
-const prettier =
-    process.platform === "win32"
-        ? "node_modules/.bin/prettier.cmd"
-        : "node_modules/.bin/prettier";
-const result = spawnSync(prettier, ["--check", "."], { stdio: "inherit" });
-
-if (result.error) {
-    process.stderr.write(`Unable to run Prettier: ${result.error.message}\n`);
+try {
+    execSync("npx prettier --check .", { stdio: "inherit" });
+} catch {
     process.exit(1);
 }
-process.exit(result.status ?? 1);

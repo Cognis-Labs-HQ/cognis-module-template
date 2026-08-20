@@ -7,10 +7,10 @@
         "test": "node --test api/tests/*.test.js cli/tests/*.test.js ui/tests/*.test.js",
         "check:manifest": "node scripts/validate-manifest.js",
         "manifest:hashes": "node scripts/update-manifest-hashes.js",
-        "check": "npm run lint && npm test && npm run check:manifest",
+        "check": "npm test && npm run lint && npm run check:manifest",
         "lint": "node ./tooling/scripts/lint-placeholder.mjs && node ./tooling/scripts/lint-readable.mjs"
     },
     "devDependencies": {
-        "prettier": "^3.6.2"
+        "prettier": "^3.9.6"
     }
 }

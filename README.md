@@ -46,7 +46,7 @@ Cross-component behavior belongs in **capabilities** (a callable contract) or **
 5. Add only capabilities the module truly needs, and keep route access least-privileged.
 6. Run `npm run manifest:hashes` last, then `npm run check` and `git diff --check`.
 
-See [`docs/architecture.md`](docs/architecture.md), [`docs/security.md`](docs/security.md), and [`docs/releasing.md`](docs/releasing.md) before implementing a production module.
+See [`docs/standard.en.md`](docs/standard.en.md) before implementing a production module; equivalent German, Indonesian, and Japanese references live beside it.
 
 ## Contributor quality checks
 

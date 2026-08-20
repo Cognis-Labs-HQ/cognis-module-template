@@ -16,8 +16,9 @@ function walk(directory) {
         }
         if (
             ![...sourceExtensions].some((extension) => path.endsWith(extension))
-        )
+        ) {
             continue;
+        }
         const source = readFileSync(path, "utf8");
         if (source.includes("\t")) {
             violations.push(

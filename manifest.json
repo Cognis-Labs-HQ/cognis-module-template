@@ -68,7 +68,7 @@
         },
         {
             "path": "README.md",
-            "sha256": "73947a194b7fae8b47664cdd5ea05e68f58344336c5408ed7d6a025c38612c8f"
+            "sha256": "8c46d6436cf4fdb3a784d599ebd957b8a6aa21c705df326a867ba218e16dcd2b"
         },
         {
             "path": "api/index.js",
@@ -83,8 +83,12 @@
             "sha256": "ee9b646dec3f75b8b6591d55968e3e5dc4981d5bc6bcda0377f4bb1158477a28"
         },
         {
+            "path": "api/tests/bootstrap.test.js",
+            "sha256": "b03e5e1c9f4a158125e4d64c346cf72e4457293caabd5f2c2713b15e8a2610ea"
+        },
+        {
             "path": "api/tests/documentation-convention.test.js",
-            "sha256": "d0f734ec3bac43fe1f9cee435a855628d63a5b40468116239f296763306c0f92"
+            "sha256": "d3a193f0388930bbc3bb4405b0bd95dabe49672d7f1fb3ba9ef2d347e5f15934"
         },
         {
             "path": "api/tests/http.test.js",
@@ -127,24 +131,28 @@
             "sha256": "34d9f94f7d3e526ede5cd5df43a3bf6eed06f5b6ba107a48b02967e4b31d6459"
         },
         {
-            "path": "docs/architecture.md",
-            "sha256": "5d95939e8e6d7e8433c089503d2c89863430126688bcb2874e5f187286f1fd47"
+            "path": "docs/standard.de.md",
+            "sha256": "e774b07f4221a464791e2e6ac5f14119612ec29f5911ff069eb4682c70bb90a3"
         },
         {
-            "path": "docs/releasing.md",
-            "sha256": "4f9a13471373e56c4cbf0e3b966efa20edb99a4423aebf5e8ce0d0e3a91f33db"
+            "path": "docs/standard.en.md",
+            "sha256": "a849542ab2666d4b47b72f074bf1245ab783cb77c2d7ca6e99d5985b83ee27eb"
         },
         {
-            "path": "docs/security.md",
-            "sha256": "b2804841d0fe36018f36ee008b0a950da6d5bcacba750c57f823f5bdaed882c2"
+            "path": "docs/standard.id.md",
+            "sha256": "6c9ff5e11975cc40d51d12b6437533d75119283daddc6d8a7909806d33708f8d"
+        },
+        {
+            "path": "docs/standard.ja.md",
+            "sha256": "8c511c8f986c804312f569a9c06ba818aa0aeee51b56921f7bdccad3270c19e2"
         },
         {
             "path": "package-lock.json",
-            "sha256": "7fbf87c6a27ae34ae421edd50cd8a489ac8ccf25c02a7d988fb17c636b2f1730"
+            "sha256": "b9891c6579cf55db003fb0728c22ff0f2ea95d99ac670e903c7ad49d8d13a550"
         },
         {
             "path": "package.json",
-            "sha256": "30d4c2d6fe6abb359700926a2724e5659cc4876db11a02630b796ee767c27b37"
+            "sha256": "e91ffdd10b0ce0acde0937136db39b9b1baf56f7d85df219b53b4b8c488459dd"
         },
         {
             "path": "routes.json",
@@ -160,11 +168,11 @@
         },
         {
             "path": "tooling/scripts/lint-placeholder.mjs",
-            "sha256": "f9a3031a09cfc86dcdf9e300570c16586534f25220e440e6376980c76fad034b"
+            "sha256": "c869f4af45abd4f82500f836d5e50af93b9988a56283477ae45bd0aa45f47fd1"
         },
         {
             "path": "tooling/scripts/lint-readable.mjs",
-            "sha256": "323a6ea6b7225a14a5cdffe744bd63207ee750ddb4cb530c3036552b55cd84fd"
+            "sha256": "fff2e006b2709345baafe18b4147c00541cd3f83d78ff113bb82032f2abcb45f"
         },
         {
             "path": "ui/app.js",
@@ -180,7 +188,7 @@
         },
         {
             "path": "ui/languages/en/strings.xml",
-            "sha256": "022f1ecef325cfcfecc511c7025ef47884d05968939d853034db0733dd414cb8"
+            "sha256": "558f5f00444d9bc4fe8ed64ecb8f1edd57ecd780bb4436e2fb039e05ca2ff144"
         },
         {
             "path": "ui/languages/id/strings.xml",
@@ -201,6 +209,10 @@
         {
             "path": "ui/tests/ambiguous-names.test.js",
             "sha256": "4f490771c3678dcc716b25f4465fb39c9eab476774897cc030c9ec690d2761eb"
+        },
+        {
+            "path": "ui/tests/localization-quality.test.js",
+            "sha256": "05ad2f86a2ea0d606cfba6cdc2f2909cef1bd0e3ba1fcd19b633cf4f8de45318"
         },
         {
             "path": "ui/tests/regression.test.js",
