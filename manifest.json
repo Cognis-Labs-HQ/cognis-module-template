@@ -1,175 +1,222 @@
 {
-  "id": "module-template",
-  "uuid": "cc810afb-4fe6-5ef7-8f0b-e23676e01db3",
-  "name": "Module Template",
-  "version": "1.0.0",
-  "class": "extension",
-  "template": "true",
-  "coreApiVersion": "v1",
-  "capabilities": [
-    "showcase:listItems"
-  ],
-  "entrypoints": {
-    "bootstrap": "./bootstrap.js",
-    "api": "./api/index.js",
-    "ui": "./ui/index.html",
-    "cli": "./cli/index.js"
-  },
-  "publisher": "Cognis Labs HQ",
-  "requires": [],
-  "requiresCapabilities": [
-    "auth:requireAuth",
-    "db:executor"
-  ],
-  "summary": "An end-to-end reference module for Cognis contributors.",
-  "description": "Demonstrates Cognis UI, API, database, CLI, capability, flow, localization, testing, and packaging contracts.",
-  "categories": [
-    "Developer Tools"
-  ],
-  "license": "AGPL-3.0-or-later",
-  "repository": "https://github.com/Cognis-Labs-HQ/cognis-module-template",
-  "homepage": "https://github.com/Cognis-Labs-HQ/cognis-module-template#readme",
-  "support": "https://github.com/Cognis-Labs-HQ/cognis-module-template/issues",
-  "assets": {
-    "screenshots": [
-        "assets/screenshots/cognis-logo.png"
-    ],
-    "icon": "assets/icon.svg",
-    "banner": "assets/banner.svg"
-  },
-  "tags": [
-    "template",
-    "development",
-    "example"
-  ],
-  "files": [
-    {
-      "path": "AGENTS.md",
-      "sha256": "509784a889286aad75c8b21042dddeaa20bd7a4929eb80db40a9deefe92e1ff5"
+    "id": "module-template",
+    "uuid": "cc810afb-4fe6-5ef7-8f0b-e23676e01db3",
+    "name": "Module Template",
+    "version": "1.0.0",
+    "class": "extension",
+    "template": "true",
+    "coreApiVersion": "v1",
+    "capabilities": ["showcase:listItems"],
+    "entrypoints": {
+        "bootstrap": "./bootstrap.js",
+        "api": "./api/index.js",
+        "ui": "./ui/index.html",
+        "cli": "./cli/index.js"
     },
-    {
-      "path": "LICENSE",
-      "sha256": "8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef"
+    "publisher": "Cognis Labs HQ",
+    "requires": [],
+    "requiresCapabilities": ["auth:requireAuth", "db:executor"],
+    "summary": "An end-to-end reference module for Cognis contributors.",
+    "description": "Demonstrates Cognis UI, API, database, CLI, capability, flow, localization, testing, and packaging contracts.",
+    "categories": ["Developer Tools"],
+    "license": "AGPL-3.0-or-later",
+    "repository": "https://github.com/Cognis-Labs-HQ/cognis-module-template",
+    "homepage": "https://github.com/Cognis-Labs-HQ/cognis-module-template#readme",
+    "support": "https://github.com/Cognis-Labs-HQ/cognis-module-template/issues",
+    "assets": {
+        "screenshots": ["assets/screenshots/cognis-logo.png"],
+        "icon": "assets/icon.svg",
+        "banner": "assets/banner.svg"
     },
-    {
-      "path": "README.md",
-      "sha256": "d91613b467fdfbe43fb2c9cadd64c5533f5a5f9b454aedceec293b6912f26ae1"
-    },
-    {
-      "path": "api/index.js",
-      "sha256": "cafcf9197f1f0d3ca11daa861592fc70431c4553f30996a403f4a9f274b264a8"
-    },
-    {
-      "path": "api/reuse/http.js",
-      "sha256": "2d69b2e8bb6cf5d01d339a15a1de81b8e06542cc55ca5d7b871988d9a4249a3d"
-    },
-    {
-      "path": "api/store.js",
-      "sha256": "75ca20ced50c5301e0fbda5aae48245007a0cb15b22f160673abc14052ca82f4"
-    },
-    {
-      "path": "api/tests/http.test.js",
-      "sha256": "0986bb8711d6b9ccc78b0f76ba7e9663803f2df7f96bf376de865f72fd75a3fb"
-    },
-    {
-      "path": "api/tests/store.test.js",
-      "sha256": "acfcd27a8f30cf8d4e679ddf4abb454bcda0d43e54797e3108fe48ebd6f7da64"
-    },
-    {
-      "path": "api/ui.js",
-      "sha256": "8aa76f432b45a4448999bfca1dcac4f8a616af1fdca962e0b0b6763afd2338ec"
-    },
-    {
-      "path": "assets/banner.svg",
-      "sha256": "157f5636c6c892ac71eb81037ad20bd1005c2778aee3445514762a63ef789dfc"
-    },
-    {
-      "path": "assets/icon.svg",
-      "sha256": "a71eb90ae9528834d16f9fc401d3e98a395da601c149f0c740cb20128ec6c364"
-    },
-    {
-      "path": "assets/screenshots/cognis-logo.png",
-      "sha256": "4ef4d3f734ba671cb380be4c3eac9297ffdb70775a93109257bcd80d0c4dc3e1"
-    },
-    {
-      "path": "bootstrap.js",
-      "sha256": "cfbf1ba6266899cf7b61bd3a78a93162fe27eca244aa2c43e421d2872ad23c79"
-    },
-    {
-      "path": "cli/index.js",
-      "sha256": "e671f86e9a1ca108d7f010c3e4fc2724aeff02558a5ba744a657c091fd556024"
-    },
-    {
-      "path": "cli/tests/index.test.js",
-      "sha256": "6c15b7b90d61ed42ccc0538238d692e7a160db601c8bed25e9de73ca3ced68aa"
-    },
-    {
-      "path": "docs/architecture.md",
-      "sha256": "5d95939e8e6d7e8433c089503d2c89863430126688bcb2874e5f187286f1fd47"
-    },
-    {
-      "path": "docs/releasing.md",
-      "sha256": "4f9a13471373e56c4cbf0e3b966efa20edb99a4423aebf5e8ce0d0e3a91f33db"
-    },
-    {
-      "path": "docs/security.md",
-      "sha256": "b2804841d0fe36018f36ee008b0a950da6d5bcacba750c57f823f5bdaed882c2"
-    },
-    {
-      "path": "package-lock.json",
-      "sha256": "01451c096b2c4a7888d5a15d89fdf7898d5fb5aaab4d9aeb8fa6cfe842fac59e"
-    },
-    {
-      "path": "package.json",
-      "sha256": "132ee49d99b54c325c543e4850b75ccb710c102cfe5be64d317f749af3854214"
-    },
-    {
-      "path": "routes.json",
-      "sha256": "fa2b23af61527603977fc61f36043aedff689ed48ab84cb2345c94bc4e954350"
-    },
-    {
-      "path": "scripts/update-manifest-hashes.js",
-      "sha256": "dbfad276635f8b40f77f7228d1ee0a385ecab845c432604136a4bb45c9c02a6a"
-    },
-    {
-      "path": "scripts/validate-manifest.js",
-      "sha256": "57884058e42355fcd8728763e7b65582613959e59efd66358c21a8ada0cf34ba"
-    },
-    {
-      "path": "ui/app.js",
-      "sha256": "e4d71645d000e0efd238fc2a0e17a38e1840e60d581bf63c7eea99a9bdf7c79e"
-    },
-    {
-      "path": "ui/index.html",
-      "sha256": "881f083645dbccac35c89610a7d4a6107efa17ac7daec3527626470212dc62c5"
-    },
-    {
-      "path": "ui/languages/de/strings.xml",
-      "sha256": "1f35153aed2d2729f14ae31dce00f33887352fd728da2b7cf0c4b5819659539a"
-    },
-    {
-      "path": "ui/languages/en/strings.xml",
-      "sha256": "022f1ecef325cfcfecc511c7025ef47884d05968939d853034db0733dd414cb8"
-    },
-    {
-      "path": "ui/languages/id/strings.xml",
-      "sha256": "d9a3c982a03dd9cfa97f1f6e3aaa7432c546bed02034bb5bda7efeca5e858235"
-    },
-    {
-      "path": "ui/languages/ja/strings.xml",
-      "sha256": "cbb92640aaa284391942c7be2fb1f9f8851e07ea4bb8461f436a72f8e867155f"
-    },
-    {
-      "path": "ui/navbar.js",
-      "sha256": "0de520cb27d0b3f8eba0a45458d6468aa70a1d2938f3b29591bcd39e85d866d3"
-    },
-    {
-      "path": "ui/styles/showcase.css",
-      "sha256": "45b17863c6fc357ee4ac3c2956a93d63c69fca0137063af870245d6f8180ddeb"
-    },
-    {
-      "path": "ui/tests/regression.test.js",
-      "sha256": "d58d994499dbdcbda1bb15ba52f136ca13d9c21ffae6e5971bfeb3d4c63e73d8"
-    }
-  ]
+    "tags": ["template", "development", "example"],
+    "files": [
+        {
+            "path": ".github/DOCUMENTATION_TEMPLATE.de.md",
+            "sha256": "68da4be565d7fcd6caf74a6eeddd62ee35620063f4fb3c42128c23e98e4c7313"
+        },
+        {
+            "path": ".github/DOCUMENTATION_TEMPLATE.en.md",
+            "sha256": "0430dc1ef9233808219652e78e6079d3b6cf455f04818487e00fd7aa217a07fa"
+        },
+        {
+            "path": ".github/DOCUMENTATION_TEMPLATE.id.md",
+            "sha256": "a701f0f05180972949e4ac159e3d65656fc66b8d07aa72b3832aa312d711cd24"
+        },
+        {
+            "path": ".github/DOCUMENTATION_TEMPLATE.ja.md",
+            "sha256": "8fafead6e01dbab777528e72d1ce924ff3d8e0bd250d21a0a29116fe1ef7ed44"
+        },
+        {
+            "path": ".gitignore",
+            "sha256": "16d30e4462189fb14dd611bdb708c510630c576a1f35b9383e89a4352da36c97"
+        },
+        {
+            "path": ".prettierignore",
+            "sha256": "ebebb0fe677b8152cac2b29c7d7ef39d41527ab1a14b935df9c8f6f6e66ec936"
+        },
+        {
+            "path": ".prettierrc",
+            "sha256": "fa9273146be8edfd6bbddaff9d0654effb7b4cd67c6163b67e971195d796ead3"
+        },
+        {
+            "path": "AGENTS.md",
+            "sha256": "fbfa080c1a0556162a3f91722d4b6bf538659ced69e7740fe4d071eb0d552270"
+        },
+        {
+            "path": "LICENSE",
+            "sha256": "8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef"
+        },
+        {
+            "path": "README.md",
+            "sha256": "8c46d6436cf4fdb3a784d599ebd957b8a6aa21c705df326a867ba218e16dcd2b"
+        },
+        {
+            "path": "api/index.js",
+            "sha256": "8d5d284164317fa3b28ff4e42dc23d88ba0e1f51cc4f511811e50bab655484f8"
+        },
+        {
+            "path": "api/reuse/http.js",
+            "sha256": "6af309497cf411e4d55ae345f75b80d3d4ef2ae76b5353cbc1d8a33d196d6838"
+        },
+        {
+            "path": "api/store.js",
+            "sha256": "ee9b646dec3f75b8b6591d55968e3e5dc4981d5bc6bcda0377f4bb1158477a28"
+        },
+        {
+            "path": "api/tests/bootstrap.test.js",
+            "sha256": "b03e5e1c9f4a158125e4d64c346cf72e4457293caabd5f2c2713b15e8a2610ea"
+        },
+        {
+            "path": "api/tests/documentation-convention.test.js",
+            "sha256": "d3a193f0388930bbc3bb4405b0bd95dabe49672d7f1fb3ba9ef2d347e5f15934"
+        },
+        {
+            "path": "api/tests/http.test.js",
+            "sha256": "1008886fc8722bd499024b815150c7b800e889a5e7d1cd8516339bd609c15054"
+        },
+        {
+            "path": "api/tests/store.test.js",
+            "sha256": "f293219bdb09b14bb17d822cc8cd31efdabd015b7db10733bc4ac349d9c036dc"
+        },
+        {
+            "path": "api/tests/structural-compliance.test.js",
+            "sha256": "c26a60e49e9b102582c6e65b77c74df44617e0f313b1510aae5ecb8610a37f61"
+        },
+        {
+            "path": "api/ui.js",
+            "sha256": "edfaf68ac88c87c73d977b1b97efbdad5722147f36a65e40aa3071f4e15b6a18"
+        },
+        {
+            "path": "assets/banner.svg",
+            "sha256": "157f5636c6c892ac71eb81037ad20bd1005c2778aee3445514762a63ef789dfc"
+        },
+        {
+            "path": "assets/icon.svg",
+            "sha256": "a71eb90ae9528834d16f9fc401d3e98a395da601c149f0c740cb20128ec6c364"
+        },
+        {
+            "path": "assets/screenshots/cognis-logo.png",
+            "sha256": "4ef4d3f734ba671cb380be4c3eac9297ffdb70775a93109257bcd80d0c4dc3e1"
+        },
+        {
+            "path": "bootstrap.js",
+            "sha256": "10e317c61bb26d9fa46927f0bbcfc964bc35011f2fc2138fab56ea6ba80c3edd"
+        },
+        {
+            "path": "cli/index.js",
+            "sha256": "70c40a6919f65afe05db81a6c8b53601cd6953eccaaa27be10f96fc7b8659e7e"
+        },
+        {
+            "path": "cli/tests/index.test.js",
+            "sha256": "34d9f94f7d3e526ede5cd5df43a3bf6eed06f5b6ba107a48b02967e4b31d6459"
+        },
+        {
+            "path": "docs/standard.de.md",
+            "sha256": "e774b07f4221a464791e2e6ac5f14119612ec29f5911ff069eb4682c70bb90a3"
+        },
+        {
+            "path": "docs/standard.en.md",
+            "sha256": "a849542ab2666d4b47b72f074bf1245ab783cb77c2d7ca6e99d5985b83ee27eb"
+        },
+        {
+            "path": "docs/standard.id.md",
+            "sha256": "6c9ff5e11975cc40d51d12b6437533d75119283daddc6d8a7909806d33708f8d"
+        },
+        {
+            "path": "docs/standard.ja.md",
+            "sha256": "8c511c8f986c804312f569a9c06ba818aa0aeee51b56921f7bdccad3270c19e2"
+        },
+        {
+            "path": "package-lock.json",
+            "sha256": "b9891c6579cf55db003fb0728c22ff0f2ea95d99ac670e903c7ad49d8d13a550"
+        },
+        {
+            "path": "package.json",
+            "sha256": "e91ffdd10b0ce0acde0937136db39b9b1baf56f7d85df219b53b4b8c488459dd"
+        },
+        {
+            "path": "routes.json",
+            "sha256": "964f6205c8cd814f2a16c557b133bd989f2f0ab43bb71cbb934f9dee1fea1aea"
+        },
+        {
+            "path": "scripts/update-manifest-hashes.js",
+            "sha256": "7de388ff4b493562f4b74d49f99a0fc0f80b4d3595fd1292eb95befd5860d649"
+        },
+        {
+            "path": "scripts/validate-manifest.js",
+            "sha256": "98d89ae4f391c0a2a4ea6a46d54b6ae87b894960af2510e562f6460fd9551ea4"
+        },
+        {
+            "path": "tooling/scripts/lint-placeholder.mjs",
+            "sha256": "c869f4af45abd4f82500f836d5e50af93b9988a56283477ae45bd0aa45f47fd1"
+        },
+        {
+            "path": "tooling/scripts/lint-readable.mjs",
+            "sha256": "fff2e006b2709345baafe18b4147c00541cd3f83d78ff113bb82032f2abcb45f"
+        },
+        {
+            "path": "ui/app.js",
+            "sha256": "37042dc33352c0b9524e86b6295fa558157dd2ecd4c8a6b4835710c8123b43e5"
+        },
+        {
+            "path": "ui/index.html",
+            "sha256": "881f083645dbccac35c89610a7d4a6107efa17ac7daec3527626470212dc62c5"
+        },
+        {
+            "path": "ui/languages/de/strings.xml",
+            "sha256": "1f35153aed2d2729f14ae31dce00f33887352fd728da2b7cf0c4b5819659539a"
+        },
+        {
+            "path": "ui/languages/en/strings.xml",
+            "sha256": "558f5f00444d9bc4fe8ed64ecb8f1edd57ecd780bb4436e2fb039e05ca2ff144"
+        },
+        {
+            "path": "ui/languages/id/strings.xml",
+            "sha256": "d9a3c982a03dd9cfa97f1f6e3aaa7432c546bed02034bb5bda7efeca5e858235"
+        },
+        {
+            "path": "ui/languages/ja/strings.xml",
+            "sha256": "cbb92640aaa284391942c7be2fb1f9f8851e07ea4bb8461f436a72f8e867155f"
+        },
+        {
+            "path": "ui/navbar.js",
+            "sha256": "5c98315d8b756af9b60e3a3b5ebc9ab882398025d06496b028fb199d0b1cbd69"
+        },
+        {
+            "path": "ui/styles/showcase.css",
+            "sha256": "7f940aa38e4cf24e534654beca18e752646ac3696c084ec5cf03c47beb12bd64"
+        },
+        {
+            "path": "ui/tests/ambiguous-names.test.js",
+            "sha256": "4f490771c3678dcc716b25f4465fb39c9eab476774897cc030c9ec690d2761eb"
+        },
+        {
+            "path": "ui/tests/localization-quality.test.js",
+            "sha256": "05ad2f86a2ea0d606cfba6cdc2f2909cef1bd0e3ba1fcd19b633cf4f8de45318"
+        },
+        {
+            "path": "ui/tests/regression.test.js",
+            "sha256": "112313c3ed5aa4549bbd261ae45e930a7578466f36328c0cce5da00a478c243e"
+        }
+    ]
 }
