@@ -1,6 +1,6 @@
 [
-  {
-    "path": "/showcase",
-    "access": { "minRole": "user" }
-  }
+    {
+        "path": "/showcase",
+        "access": { "minRole": "user" }
+    }
 ]

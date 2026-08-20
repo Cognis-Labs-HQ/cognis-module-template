@@ -14,18 +14,18 @@ Install the repository as a Cognis module source, review its permissions, enable
 
 ## Architecture map
 
-| Path | Responsibility | Key lesson |
-| --- | --- | --- |
-| `manifest.json` | Identity, compatibility, capabilities, entrypoints, store metadata, immutable file hashes | UUIDs are dependencies; IDs are human-readable |
-| `bootstrap.js` | Sole host integration point | Register through `ctx`; never import Cognis internals |
-| `routes.json` | Up-front page access declaration | The host validates protected routes before activation |
-| `api/index.js` | Authenticated HTTP boundary and orchestration | Validate input and delegate persistence |
-| `api/store.js` | Portable database-executor commands and schema | Never bind a module to a database driver |
-| `api/ui.js` | Static assets, SPA route, navigation | Host registration makes disable/uninstall cleanup scoped |
-| `ui/` | Browser entrypoint, styling, four locale bundles | Use host routes/toasts and module-owned strings |
-| `cli/index.js` | `cognisctl` extension | CLI calls the public API instead of bypassing it |
-| `docs/` | Contributor deep dives | Explain contracts and safe extension patterns |
-| `scripts/` | Package integrity checks | Every shipped file has a SHA-256 digest |
+| Path            | Responsibility                                                                            | Key lesson                                               |
+| --------------- | ----------------------------------------------------------------------------------------- | -------------------------------------------------------- |
+| `manifest.json` | Identity, compatibility, capabilities, entrypoints, store metadata, immutable file hashes | UUIDs are dependencies; IDs are human-readable           |
+| `bootstrap.js`  | Sole host integration point                                                               | Register through `ctx`; never import Cognis internals    |
+| `routes.json`   | Up-front page access declaration                                                          | The host validates protected routes before activation    |
+| `api/index.js`  | Authenticated HTTP boundary and orchestration                                             | Validate input and delegate persistence                  |
+| `api/store.js`  | Portable database-executor commands and schema                                            | Never bind a module to a database driver                 |
+| `api/ui.js`     | Static assets, SPA route, navigation                                                      | Host registration makes disable/uninstall cleanup scoped |
+| `ui/`           | Browser entrypoint, styling, four locale bundles                                          | Use host routes/toasts and module-owned strings          |
+| `cli/index.js`  | `cognisctl` extension                                                                     | CLI calls the public API instead of bypassing it         |
+| `docs/`         | Contributor deep dives                                                                    | Explain contracts and safe extension patterns            |
+| `scripts/`      | Package integrity checks                                                                  | Every shipped file has a SHA-256 digest                  |
 
 ## Lifecycle and boundaries
 
@@ -47,3 +47,17 @@ Cross-component behavior belongs in **capabilities** (a callable contract) or **
 6. Run `npm run manifest:hashes` last, then `npm run check` and `git diff --check`.
 
 See [`docs/architecture.md`](docs/architecture.md), [`docs/security.md`](docs/security.md), and [`docs/releasing.md`](docs/releasing.md) before implementing a production module.
+
+## Contributor quality checks
+
+This template includes the same automated contributor guardrails used by the Jitsi Meet module: Prettier formatting, readability limits, external-module structural checks, documentation-template parity, and ambiguous-name checks.
+
+```sh
+npm install
+npm run lint
+npm test
+npm run check:manifest
+git diff --check
+```
+
+New contract documentation can start from the localized templates in `.github/DOCUMENTATION_TEMPLATE.<language>.md`. Keep all four template variants structurally synchronized.
