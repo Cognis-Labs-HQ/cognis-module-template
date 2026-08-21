@@ -52,6 +52,16 @@ test("manifest localization keys exist in every language", () => {
     }
 });
 
+test("manifest publishes the module locale bundle location", () => {
+    const manifest = JSON.parse(
+        readFileSync(resolve(ROOT, "manifest.json"), "utf8"),
+    );
+    assert.equal(
+        manifest.ui?.stringsBaseUrl,
+        "/static/modules/module-template/languages",
+    );
+});
+
 test("English titles use Title Case", () => {
     const violations = [];
     for (const [key, value] of strings("en")) {

@@ -10,7 +10,7 @@ Run `npm install` before development. Use `rg` rather than recursive `grep` for 
 
 Keep `manifest.json`, `package.json`, `routes.json`, and `bootstrap.js` at the repository root. Preserve the module UUID permanently. Synchronize the versions in the manifest, package, and lockfile, retain `"type": "module"`, and keep `routes.json` as an array.
 
-Every entrypoint, asset, and `manifest.files` item must be a regular repository-relative file with exact filename casing. After the final file change, run `npm run manifest:hashes`; never list `manifest.json` in its own digest inventory. Review dependencies and requested capabilities, and never commit generated secrets or personal data.
+Always set `ui.stringsBaseUrl` in `manifest.json` to the module-owned locale bundle base URL; this is essential so Cognis can resolve localized manifest metadata before the module UI loads. Every entrypoint, asset, and `manifest.files` item must be a regular repository-relative file with exact filename casing. After the final file change, run `npm run manifest:hashes`; never list `manifest.json` in its own digest inventory. Review dependencies and requested capabilities, and never commit generated secrets or personal data.
 
 ## Component isolation and structure
 
