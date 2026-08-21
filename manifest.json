@@ -1,8 +1,8 @@
 {
     "id": "module-template",
     "uuid": "cc810afb-4fe6-5ef7-8f0b-e23676e01db3",
-    "name": "Module Template",
-    "version": "1.0.0",
+    "name": "module.module_template.name",
+    "version": "1.0.1",
     "class": "extension",
     "template": "true",
     "coreApiVersion": "v1",
@@ -16,9 +16,9 @@
     "publisher": "Cognis Labs HQ",
     "requires": [],
     "requiresCapabilities": ["auth:requireAuth", "db:executor"],
-    "summary": "An end-to-end reference module for Cognis contributors.",
-    "description": "Demonstrates Cognis UI, API, database, CLI, capability, flow, localization, testing, and packaging contracts.",
-    "categories": ["Developer Tools"],
+    "summary": "module.module_template.summary",
+    "description": "module.module_template.description",
+    "categories": ["module.module_template.category_developer_tools"],
     "license": "AGPL-3.0-or-later",
     "repository": "https://github.com/Cognis-Labs-HQ/cognis-module-template",
     "homepage": "https://github.com/Cognis-Labs-HQ/cognis-module-template#readme",
@@ -28,7 +28,11 @@
         "icon": "assets/icon.svg",
         "banner": "assets/banner.svg"
     },
-    "tags": ["template", "development", "example"],
+    "tags": [
+        "module.module_template.tag_template",
+        "module.module_template.tag_development",
+        "module.module_template.tag_example"
+    ],
     "files": [
         {
             "path": ".github/DOCUMENTATION_TEMPLATE.de.md",
@@ -68,7 +72,7 @@
         },
         {
             "path": "README.md",
-            "sha256": "8c46d6436cf4fdb3a784d599ebd957b8a6aa21c705df326a867ba218e16dcd2b"
+            "sha256": "f468df4e07bfa2f3528a2b8fed59c38e76de7362296820ed7efc55127b415101"
         },
         {
             "path": "api/index.js",
@@ -80,11 +84,11 @@
         },
         {
             "path": "api/store.js",
-            "sha256": "ee9b646dec3f75b8b6591d55968e3e5dc4981d5bc6bcda0377f4bb1158477a28"
+            "sha256": "0f698375223c2f5e3103f3aed834e403dc787a871d05bcbed6081374f44d19f7"
         },
         {
             "path": "api/tests/bootstrap.test.js",
-            "sha256": "b03e5e1c9f4a158125e4d64c346cf72e4457293caabd5f2c2713b15e8a2610ea"
+            "sha256": "3e306c3f2907b21a2c0abde415041752781dc5a72b99a9685b160615ade8e65d"
         },
         {
             "path": "api/tests/documentation-convention.test.js",
@@ -120,7 +124,7 @@
         },
         {
             "path": "bootstrap.js",
-            "sha256": "10e317c61bb26d9fa46927f0bbcfc964bc35011f2fc2138fab56ea6ba80c3edd"
+            "sha256": "d2f095f76c688902850bbe9c15745d31a29bbc2d88963d814f971195819f95d8"
         },
         {
             "path": "cli/index.js",
@@ -132,27 +136,27 @@
         },
         {
             "path": "docs/standard.de.md",
-            "sha256": "e774b07f4221a464791e2e6ac5f14119612ec29f5911ff069eb4682c70bb90a3"
+            "sha256": "faa92b5a5aaa6c81960694add6a546bd6fe2bca31d1979e728509a8a2b5eb880"
         },
         {
             "path": "docs/standard.en.md",
-            "sha256": "a849542ab2666d4b47b72f074bf1245ab783cb77c2d7ca6e99d5985b83ee27eb"
+            "sha256": "c0930a42e5e9eece10f2f1ff655cf13cbff136e2a67c989abcfd5b83311c8393"
         },
         {
             "path": "docs/standard.id.md",
-            "sha256": "6c9ff5e11975cc40d51d12b6437533d75119283daddc6d8a7909806d33708f8d"
+            "sha256": "5149f97f40698dbce62be002e1435e4f24c36aa5f6e083ca0ca94df11b7047aa"
         },
         {
             "path": "docs/standard.ja.md",
-            "sha256": "8c511c8f986c804312f569a9c06ba818aa0aeee51b56921f7bdccad3270c19e2"
+            "sha256": "5103ea0794b9e5657e691681642b104af13761e418cefa9493ae8b7d6e8a9b7e"
         },
         {
             "path": "package-lock.json",
-            "sha256": "b9891c6579cf55db003fb0728c22ff0f2ea95d99ac670e903c7ad49d8d13a550"
+            "sha256": "50263d755aa5040e2a6efce49d22aeeddc646a06ce86afe8a0a702ad3fbe0132"
         },
         {
             "path": "package.json",
-            "sha256": "e91ffdd10b0ce0acde0937136db39b9b1baf56f7d85df219b53b4b8c488459dd"
+            "sha256": "b98deb5f4f47edea2fe985106b51d860c53a78e9608a0c046fca56474668f7dd"
         },
         {
             "path": "routes.json",
@@ -184,19 +188,19 @@
         },
         {
             "path": "ui/languages/de/strings.xml",
-            "sha256": "1f35153aed2d2729f14ae31dce00f33887352fd728da2b7cf0c4b5819659539a"
+            "sha256": "95db8ab9a9fa7932eaab51eb12821d2fec184b034b8447e8e03e1ebc00420637"
         },
         {
             "path": "ui/languages/en/strings.xml",
-            "sha256": "558f5f00444d9bc4fe8ed64ecb8f1edd57ecd780bb4436e2fb039e05ca2ff144"
+            "sha256": "2ac99b7c998ba4806946cec9cc1f660176cf4d1239de01f3015f9f09424d781e"
         },
         {
             "path": "ui/languages/id/strings.xml",
-            "sha256": "d9a3c982a03dd9cfa97f1f6e3aaa7432c546bed02034bb5bda7efeca5e858235"
+            "sha256": "0de60128ec1be44812ca54512b7e1cb5094e3926489a2af2de42d1fee1b18528"
         },
         {
             "path": "ui/languages/ja/strings.xml",
-            "sha256": "cbb92640aaa284391942c7be2fb1f9f8851e07ea4bb8461f436a72f8e867155f"
+            "sha256": "5d28b2043db0d1ed8be12c31a6505f7fe70d93992fd25da69ccd06b82506faaa"
         },
         {
             "path": "ui/navbar.js",
@@ -212,7 +216,7 @@
         },
         {
             "path": "ui/tests/localization-quality.test.js",
-            "sha256": "05ad2f86a2ea0d606cfba6cdc2f2909cef1bd0e3ba1fcd19b633cf4f8de45318"
+            "sha256": "0cd15e09b5023c90b4015c6f3f5a02a26c18a4214cd0bc84ee9bf86429ead35f"
         },
         {
             "path": "ui/tests/regression.test.js",

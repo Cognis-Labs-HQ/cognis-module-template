@@ -19,6 +19,7 @@ Die Vorlage zeigt die Grenzen, die jedes eigenständige externe Cognis-Modul ein
 - `ctx` stellt Routen, UI-Registrierung, Capabilities, Flows, Authentifizierung, Protokollierung und Persistenzzugriff bereit.
 - Laufzeitimporte bleiben repository-relativ und greifen nie auf Interna von Cognis oder benachbarten Komponenten zu.
 - Bereichsgebundene Registrierungen müssen beim Deaktivieren oder Deinstallieren entfernbar sein.
+- `uninstallModule(ctx, { deleteContent })` muss gespeicherte Inhalte bewahren, sofern der Administrator ihre Löschung nicht anfordert.
 
 ### Sicherheit
 

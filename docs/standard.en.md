@@ -19,6 +19,7 @@ The template demonstrates the boundaries that every standalone Cognis external m
 - `ctx` supplies routes, UI registration, capabilities, flows, authentication, logging, and persistence access.
 - Runtime imports remain repository-relative and never access Cognis or sibling-component internals.
 - Scoped registrations must be removable when the module is disabled or uninstalled.
+- `uninstallModule(ctx, { deleteContent })` must preserve saved content unless the administrator requests its deletion.
 
 ### Security
 
