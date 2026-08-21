@@ -46,4 +46,11 @@ export class ShowcaseStore {
         });
         return item;
     }
+
+    async deleteAllData() {
+        await this.database.executeCommand({
+            option: "DELETE",
+            table: "module_template_items",
+        });
+    }
 }

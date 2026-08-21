@@ -34,6 +34,7 @@ Install the repository as a Cognis module source, review its permissions, enable
 3. API handlers authenticate and validate. The store owns schema and persistence through `db:executor`.
 4. UI and CLI consume the same HTTP API. Other components may consume `showcase:listItems` through `ctx`.
 5. Scoped registrations are removed when disabled. Add and return an explicit disposer if you create timers, listeners, sockets, or other resources outside scoped registrations.
+6. Uninstalling calls `uninstallModule(ctx, { deleteContent })`; the template deletes its database rows only when the administrator requests content deletion.
 
 Cross-component behavior belongs in **capabilities** (a callable contract) or **flows** (ordered extension stages). Do not reach into Cognis, gateways, or sibling module source trees. Required component links in `requires` are UUIDs; runtime contracts belong in `requiresCapabilities`.
 

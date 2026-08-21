@@ -1,4 +1,5 @@
 import { registerApi } from "./api/index.js";
+import { ShowcaseStore } from "./api/store.js";
 import { registerUi } from "./api/ui.js";
 
 const FLOW = {
@@ -6,6 +7,19 @@ const FLOW = {
     description: "Let modules enrich showcase items without direct imports.",
     stages: ["validate", "enrich", "present"],
 };
+
+export async function uninstallModule(ctx, { deleteContent }) {
+    if (!deleteContent) return;
+
+    const store = new ShowcaseStore(ctx.getCapability("db:executor"));
+    await store.ensureSchema();
+    await store.deleteAllData();
+    ctx.log?.("info", "Module template saved data deleted.", {
+        component: "module-template",
+        operation: "uninstall_cleanup",
+        deleteContent,
+    });
+}
 
 export function bootstrapModule(ctx) {
     registerUi(ctx);

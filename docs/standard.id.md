@@ -19,6 +19,7 @@ Templat ini menunjukkan batasan yang harus dipertahankan oleh setiap modul ekste
 - `ctx` menyediakan rute, registrasi UI, kapabilitas, alur, autentikasi, pencatatan, dan akses persistensi.
 - Impor runtime tetap relatif terhadap repositori dan tidak pernah mengakses internal Cognis atau komponen lain.
 - Registrasi tercakup harus dapat dihapus saat modul dinonaktifkan atau dicopot.
+- `uninstallModule(ctx, { deleteContent })` harus mempertahankan konten tersimpan kecuali administrator meminta penghapusannya.
 
 ### Keamanan
 

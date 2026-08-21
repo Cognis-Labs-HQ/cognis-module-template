@@ -25,7 +25,7 @@ test("localized resources keep matching key sets", () => {
     }
 });
 
-test("manifest preference localization keys exist in every language", () => {
+test("manifest localization keys exist in every language", () => {
     const manifest = JSON.parse(
         readFileSync(resolve(ROOT, "manifest.json"), "utf8"),
     );
@@ -33,6 +33,21 @@ test("manifest preference localization keys exist in every language", () => {
         for (const language of LANGUAGES) {
             assert.ok(strings(language).has(preference.labelKey));
             assert.ok(strings(language).has(preference.descriptionKey));
+        }
+    }
+    const metadataKeys = [
+        manifest.name,
+        manifest.summary,
+        manifest.description,
+        ...manifest.categories,
+        ...manifest.tags,
+    ];
+    for (const key of metadataKeys) {
+        for (const language of LANGUAGES) {
+            assert.ok(
+                strings(language).has(key),
+                `${language} is missing ${key}`,
+            );
         }
     }
 });
