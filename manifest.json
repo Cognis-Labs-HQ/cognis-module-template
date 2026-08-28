@@ -2,7 +2,7 @@
     "id": "module-template",
     "uuid": "cc810afb-4fe6-5ef7-8f0b-e23676e01db3",
     "name": "module.module_template.name",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "class": "extension",
     "template": "true",
     "coreApiVersion": "v1",
@@ -55,7 +55,7 @@
         },
         {
             "path": ".github/copilot-instructions.md",
-            "sha256": "c1cd9c7ae077c18c4aa2a3570261911e033229d66a13bbf1ade743c91de7c6dc"
+            "sha256": "ed253d475dc498b7fe917279ef2c2b9b48478ccd9f15682182408785d79a5e8b"
         },
         {
             "path": ".gitignore",
@@ -71,7 +71,7 @@
         },
         {
             "path": "AGENTS.md",
-            "sha256": "599ecab93bd2953bc53bb2cb361ed6bafcff1aee5636d7fb3112d37bf0c1097c"
+            "sha256": "ed253d475dc498b7fe917279ef2c2b9b48478ccd9f15682182408785d79a5e8b"
         },
         {
             "path": "LICENSE",
@@ -115,7 +115,7 @@
         },
         {
             "path": "api/tests/documentation-convention.test.js",
-            "sha256": "d26a481acba97381d74ebe2cce625708d772ade249449b3ce6f8c30edc204f2e"
+            "sha256": "31884632865143fa5d47bbea425b131c1abf99cf41836a657bca9d26d5725335"
         },
         {
             "path": "api/tests/http.test.js",
@@ -158,22 +158,6 @@
             "sha256": "34d9f94f7d3e526ede5cd5df43a3bf6eed06f5b6ba107a48b02967e4b31d6459"
         },
         {
-            "path": "docs/changelog/align-changelog-structure-ai-instructions.de.md",
-            "sha256": "9476859675b2d610f43394749fd2f00625bc4d1753ff91bc6d71097319f8f3dd"
-        },
-        {
-            "path": "docs/changelog/align-changelog-structure-ai-instructions.en.md",
-            "sha256": "3da77bf365280bfb2a7aa2be1119219f32a7dd2befdef69fd4a866a03d42a9dd"
-        },
-        {
-            "path": "docs/changelog/align-changelog-structure-ai-instructions.id.md",
-            "sha256": "63f77b218df09d963cf3f0d8366ec9e51fe603c9679e3509f2ee7788ac0d632b"
-        },
-        {
-            "path": "docs/changelog/align-changelog-structure-ai-instructions.ja.md",
-            "sha256": "de2c697d972f3774064bdec32c066fd97444b713ff7c2c833d6e707154790549"
-        },
-        {
             "path": "docs/standard.de.md",
             "sha256": "faa92b5a5aaa6c81960694add6a546bd6fe2bca31d1979e728509a8a2b5eb880"
         },
@@ -191,11 +175,11 @@
         },
         {
             "path": "package-lock.json",
-            "sha256": "7e327a06ef378836a51f680f21a786baec0f24ecef2a5805ffc0e5a13ae84cc3"
+            "sha256": "4e407e8dd625b8fef17b2401b4f606bb1ed96a0cbbd97668ff03bff54418371c"
         },
         {
             "path": "package.json",
-            "sha256": "b110f7390587aef9379e738f240a23267de756643ce790cb5a2cb551b8570915"
+            "sha256": "f3aa1ad41ae624209ef4744940e8a3c1840ff0c8a1dad5389880fbd8c7c8ee3a"
         },
         {
             "path": "routes.json",
@@ -203,11 +187,11 @@
         },
         {
             "path": "scripts/update-manifest-hashes.js",
-            "sha256": "7de388ff4b493562f4b74d49f99a0fc0f80b4d3595fd1292eb95befd5860d649"
+            "sha256": "63a78d46487df6610af4f4d5a8d8ea712eb66422b55056e6969b4683369dd395"
         },
         {
             "path": "scripts/validate-manifest.js",
-            "sha256": "98d89ae4f391c0a2a4ea6a46d54b6ae87b894960af2510e562f6460fd9551ea4"
+            "sha256": "09247f2d0a51f70cfba1ab26c588db1b3de5ae0519305f252a1df1c7c61d8b80"
         },
         {
             "path": "tooling/scripts/lint-placeholder.mjs",

@@ -1,6 +1,6 @@
 # Menyelaraskan panduan changelog modul eksternal
 
-**Cabang Fitur:** work
+**Cabang Fitur:** feature-align-changelog-structure-with-pr-187
 
 ## Struktur changelog terlokalisasi yang baku
 
@@ -13,3 +13,4 @@ Instruksi repositori untuk agen pemrograman dan GitHub Copilot kini menjelaskan 
 ## Komit
 
 - [96f20bd](https://github.com/Cognis-Labs-HQ/cognis-module-template/commit/96f20bd2c4f36ec597efe166c699d551e287cbad)
+- [ba615b0](https://github.com/Cognis-Labs-HQ/cognis-module-template/commit/ba615b085049af53fcbac11f6184bb7fd0c4c5a8)

@@ -95,3 +95,13 @@ test("changelogs identify their feature branch and commits", () => {
     });
     assert.deepEqual(violations, []);
 });
+
+test("changelog digests stay outside the module manifest", () => {
+    const manifest = JSON.parse(
+        readFileSync(resolve(ROOT, "manifest.json"), "utf8"),
+    );
+    const changelogEntries = manifest.files.filter(({ path }) =>
+        path.startsWith("docs/changelog/"),
+    );
+    assert.deepEqual(changelogEntries, []);
+});

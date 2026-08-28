@@ -1,6 +1,6 @@
 # Align external module changelog guidance
 
-**Feature Branch:** work
+**Feature Branch:** feature-align-changelog-structure-with-pr-187
 
 ## Standardized localized changelog structure
 
@@ -13,3 +13,4 @@ The repository instructions for coding agents and GitHub Copilot now describe th
 ## Commits
 
 - [96f20bd](https://github.com/Cognis-Labs-HQ/cognis-module-template/commit/96f20bd2c4f36ec597efe166c699d551e287cbad)
+- [ba615b0](https://github.com/Cognis-Labs-HQ/cognis-module-template/commit/ba615b085049af53fcbac11f6184bb7fd0c4c5a8)

@@ -1,6 +1,6 @@
 # Changelog-Vorgaben für externe Module vereinheitlichen
 
-**Feature-Zweig:** work
+**Feature-Zweig:** feature-align-changelog-structure-with-pr-187
 
 ## Einheitliche lokalisierte Changelog-Struktur
 
@@ -13,3 +13,4 @@ Die Repository-Anweisungen für Coding-Agenten und GitHub Copilot beschreiben nu
 ## Änderungen
 
 - [96f20bd](https://github.com/Cognis-Labs-HQ/cognis-module-template/commit/96f20bd2c4f36ec597efe166c699d551e287cbad)
+- [ba615b0](https://github.com/Cognis-Labs-HQ/cognis-module-template/commit/ba615b085049af53fcbac11f6184bb7fd0c4c5a8)
