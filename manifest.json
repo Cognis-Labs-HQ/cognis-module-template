@@ -2,7 +2,7 @@
     "id": "module-template",
     "uuid": "cc810afb-4fe6-5ef7-8f0b-e23676e01db3",
     "name": "module.module_template.name",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "class": "extension",
     "template": "true",
     "coreApiVersion": "v1",
@@ -55,7 +55,7 @@
         },
         {
             "path": ".github/copilot-instructions.md",
-            "sha256": "ed253d475dc498b7fe917279ef2c2b9b48478ccd9f15682182408785d79a5e8b"
+            "sha256": "371fd047a2e7a41968379341899e50df1ee910b0fc0700429c0a0aab209e8ad3"
         },
         {
             "path": ".gitignore",
@@ -71,7 +71,7 @@
         },
         {
             "path": "AGENTS.md",
-            "sha256": "ed253d475dc498b7fe917279ef2c2b9b48478ccd9f15682182408785d79a5e8b"
+            "sha256": "371fd047a2e7a41968379341899e50df1ee910b0fc0700429c0a0aab209e8ad3"
         },
         {
             "path": "LICENSE",
@@ -115,7 +115,7 @@
         },
         {
             "path": "api/tests/documentation-convention.test.js",
-            "sha256": "31884632865143fa5d47bbea425b131c1abf99cf41836a657bca9d26d5725335"
+            "sha256": "c11ea7bdb7f16ca8e0b9411eb692ae3e719db1708759f13fba2eb8480bd0ea9c"
         },
         {
             "path": "api/tests/http.test.js",
@@ -175,11 +175,11 @@
         },
         {
             "path": "package-lock.json",
-            "sha256": "4e407e8dd625b8fef17b2401b4f606bb1ed96a0cbbd97668ff03bff54418371c"
+            "sha256": "bbf3ee037399bc0c47d673f065a7953ec56cf7b1cb6e011c166d058f2d573a29"
         },
         {
             "path": "package.json",
-            "sha256": "f3aa1ad41ae624209ef4744940e8a3c1840ff0c8a1dad5389880fbd8c7c8ee3a"
+            "sha256": "79f2cb65eb2a02d98c70678d07fbafe9c0b908bb038c50634bf56180fffbc641"
         },
         {
             "path": "routes.json",

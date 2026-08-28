@@ -42,6 +42,8 @@ Use the repository Prettier configuration: four-space indentation, double quotes
 
 Store changelog entries in the shared `docs/changelog/` directory; do not create a root `CHANGELOG.md` or component-local changelog directories. Every pull request must add one entry in each supported language (`de`, `en`, `id`, and `ja`) using `<branch-name-without-copilot-prefix>.<lang>.md` filenames.
 
+This template repository is the sole exception: do not create changelog entries for changes made to the template itself. The requirement above applies to external modules created from this template and must remain in these inherited instructions.
+
 Each localized entry must contain, in this order, a level-one localized title, a localized bold feature-branch label, one or more level-two change headings with explanatory body text, and a localized level-two commit section. Use one change point per level-two heading because Cognis uses those headings as release-popup summaries. Translate the prose and provenance labels rather than copying English into other languages.
 
 List implementation provenance as Markdown links whose targets use the full `https://github.com/Cognis-Labs-HQ/cognis-module-template/commit/<full-sha>` URL; the visible label may use the seven-character short reference. Before finishing, ensure the commit list records the immediately preceding implementation commit. If this requires a final bookkeeping commit, restrict it to the localized changelog files; because changelogs are excluded from the digest inventory, this bookkeeping step must not modify `manifest.json`. Existing changelog entries are immutable except for factual corrections.

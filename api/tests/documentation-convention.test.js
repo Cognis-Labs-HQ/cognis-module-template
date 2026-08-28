@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { readFileSync, readdirSync, statSync } from "node:fs";
+import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
 import { relative, resolve } from "node:path";
 
 const ROOT = resolve(import.meta.dirname, "../..");
@@ -20,11 +20,6 @@ function headingLevels(path) {
         .split("\n")
         .filter((line) => /^#{1,6} /.test(line))
         .map((line) => line.match(/^#+/)[0].length);
-}
-
-function changelogFiles() {
-    const directory = resolve(ROOT, "docs/changelog");
-    return markdownFiles(directory);
 }
 
 test("documentation follows the hidden heading convention", () => {
@@ -71,29 +66,8 @@ test("every documentation topic has one variant per supported language", () => {
     }
 });
 
-test("changelogs identify their feature branch and commits", () => {
-    const violations = changelogFiles().flatMap((path) => {
-        const markdown = readFileSync(path, "utf8");
-        const branchMatches = [
-            ...markdown.matchAll(
-                /^\*\*(?:Feature Branch|Feature-Zweig|Cabang Fitur|機能ブランチ):\*\*\s+(.+)$/gm,
-            ),
-        ];
-        const hasCommitSection =
-            /^## .*?(?:commits?|änderungen|komit|コミット).*$/im.test(markdown);
-        const commitUrls = [
-            ...markdown.matchAll(
-                /https:\/\/github\.com\/Cognis-Labs-HQ\/cognis-module-template\/commit\/[0-9a-f]{40}/gi,
-            ),
-        ];
-        return branchMatches.length === 1 &&
-            branchMatches[0][1].trim() &&
-            hasCommitSection &&
-            commitUrls.length > 0
-            ? []
-            : [relative(ROOT, path)];
-    });
-    assert.deepEqual(violations, []);
+test("the template repository does not publish its own changelog", () => {
+    assert.equal(existsSync(resolve(ROOT, "docs/changelog")), false);
 });
 
 test("changelog digests stay outside the module manifest", () => {
