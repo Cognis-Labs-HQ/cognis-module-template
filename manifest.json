@@ -2,7 +2,7 @@
     "id": "module-template",
     "uuid": "cc810afb-4fe6-5ef7-8f0b-e23676e01db3",
     "name": "module.module_template.name",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "class": "extension",
     "template": "true",
     "coreApiVersion": "v1",
@@ -54,6 +54,10 @@
             "sha256": "8fafead6e01dbab777528e72d1ce924ff3d8e0bd250d21a0a29116fe1ef7ed44"
         },
         {
+            "path": ".github/copilot-instructions.md",
+            "sha256": "c1cd9c7ae077c18c4aa2a3570261911e033229d66a13bbf1ade743c91de7c6dc"
+        },
+        {
             "path": ".gitignore",
             "sha256": "16d30e4462189fb14dd611bdb708c510630c576a1f35b9383e89a4352da36c97"
         },
@@ -67,7 +71,7 @@
         },
         {
             "path": "AGENTS.md",
-            "sha256": "562cf56d92986e0029ecda5878cb3f48cf257a28ce9085ddfbe91d1c623cabd3"
+            "sha256": "599ecab93bd2953bc53bb2cb361ed6bafcff1aee5636d7fb3112d37bf0c1097c"
         },
         {
             "path": "LICENSE",
@@ -111,7 +115,7 @@
         },
         {
             "path": "api/tests/documentation-convention.test.js",
-            "sha256": "d3a193f0388930bbc3bb4405b0bd95dabe49672d7f1fb3ba9ef2d347e5f15934"
+            "sha256": "d26a481acba97381d74ebe2cce625708d772ade249449b3ce6f8c30edc204f2e"
         },
         {
             "path": "api/tests/http.test.js",
@@ -154,6 +158,22 @@
             "sha256": "34d9f94f7d3e526ede5cd5df43a3bf6eed06f5b6ba107a48b02967e4b31d6459"
         },
         {
+            "path": "docs/changelog/align-changelog-structure-ai-instructions.de.md",
+            "sha256": "9476859675b2d610f43394749fd2f00625bc4d1753ff91bc6d71097319f8f3dd"
+        },
+        {
+            "path": "docs/changelog/align-changelog-structure-ai-instructions.en.md",
+            "sha256": "3da77bf365280bfb2a7aa2be1119219f32a7dd2befdef69fd4a866a03d42a9dd"
+        },
+        {
+            "path": "docs/changelog/align-changelog-structure-ai-instructions.id.md",
+            "sha256": "63f77b218df09d963cf3f0d8366ec9e51fe603c9679e3509f2ee7788ac0d632b"
+        },
+        {
+            "path": "docs/changelog/align-changelog-structure-ai-instructions.ja.md",
+            "sha256": "de2c697d972f3774064bdec32c066fd97444b713ff7c2c833d6e707154790549"
+        },
+        {
             "path": "docs/standard.de.md",
             "sha256": "faa92b5a5aaa6c81960694add6a546bd6fe2bca31d1979e728509a8a2b5eb880"
         },
@@ -171,11 +191,11 @@
         },
         {
             "path": "package-lock.json",
-            "sha256": "50263d755aa5040e2a6efce49d22aeeddc646a06ce86afe8a0a702ad3fbe0132"
+            "sha256": "7e327a06ef378836a51f680f21a786baec0f24ecef2a5805ffc0e5a13ae84cc3"
         },
         {
             "path": "package.json",
-            "sha256": "b98deb5f4f47edea2fe985106b51d860c53a78e9608a0c046fca56474668f7dd"
+            "sha256": "b110f7390587aef9379e738f240a23267de756643ce790cb5a2cb551b8570915"
         },
         {
             "path": "routes.json",

@@ -22,6 +22,11 @@ function headingLevels(path) {
         .map((line) => line.match(/^#+/)[0].length);
 }
 
+function changelogFiles() {
+    const directory = resolve(ROOT, "docs/changelog");
+    return markdownFiles(directory);
+}
+
 test("documentation follows the hidden heading convention", () => {
     const expected = headingLevels(TEMPLATE).slice(0, 3);
     const violations = markdownFiles(resolve(ROOT, "docs")).flatMap((path) => {
@@ -64,4 +69,29 @@ test("every documentation topic has one variant per supported language", () => {
     for (const [topic, variants] of families) {
         assert.deepEqual([...variants].sort(), [...LANGUAGES].sort(), topic);
     }
+});
+
+test("changelogs identify their feature branch and commits", () => {
+    const violations = changelogFiles().flatMap((path) => {
+        const markdown = readFileSync(path, "utf8");
+        const branchMatches = [
+            ...markdown.matchAll(
+                /^\*\*(?:Feature Branch|Feature-Zweig|Cabang Fitur|機能ブランチ):\*\*\s+(.+)$/gm,
+            ),
+        ];
+        const hasCommitSection =
+            /^## .*?(?:commits?|änderungen|komit|コミット).*$/im.test(markdown);
+        const commitUrls = [
+            ...markdown.matchAll(
+                /https:\/\/github\.com\/Cognis-Labs-HQ\/cognis-module-template\/commit\/[0-9a-f]{40}/gi,
+            ),
+        ];
+        return branchMatches.length === 1 &&
+            branchMatches[0][1].trim() &&
+            hasCommitSection &&
+            commitUrls.length > 0
+            ? []
+            : [relative(ROOT, path)];
+    });
+    assert.deepEqual(violations, []);
 });

@@ -37,3 +37,11 @@ git diff --check
 ```
 
 Use the repository Prettier configuration: four-space indentation, double quotes in JavaScript, and trailing commas in multiline structures. Never wrap imports in `try`/`catch`. Every behavior change requires tests, safe logging, and synchronized documentation. Do not add AI reasoning, session notes, or process commentary to product-facing files.
+
+## Changelog entries
+
+Store changelog entries in the shared `docs/changelog/` directory; do not create a root `CHANGELOG.md` or component-local changelog directories. Every pull request must add one entry in each supported language (`de`, `en`, `id`, and `ja`) using `<branch-name-without-copilot-prefix>.<lang>.md` filenames.
+
+Each localized entry must contain, in this order, a level-one localized title, a localized bold feature-branch label, one or more level-two change headings with explanatory body text, and a localized level-two commit section. Use one change point per level-two heading because Cognis uses those headings as release-popup summaries. Translate the prose and provenance labels rather than copying English into other languages.
+
+List implementation provenance as Markdown links whose targets use the full `https://github.com/Cognis-Labs-HQ/cognis-module-template/commit/<full-sha>` URL; the visible label may use the seven-character short reference. Before finishing, ensure the commit list records the immediately preceding implementation commit. If this requires a final bookkeeping commit, restrict it to the localized changelog files and the mandatory `manifest.json` digest refresh. Existing changelog entries are immutable except for factual corrections.
