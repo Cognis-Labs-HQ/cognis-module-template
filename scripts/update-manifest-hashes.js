@@ -10,7 +10,12 @@ const paths = execFileSync(
 )
     .trim()
     .split("\n")
-    .filter((path) => path && path !== "manifest.json")
+    .filter(
+        (path) =>
+            path &&
+            path !== "manifest.json" &&
+            !path.startsWith("docs/changelog/"),
+    )
     .sort();
 manifest.files = await Promise.all(
     paths.map(async (path) => ({

@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { readFileSync, readdirSync, statSync } from "node:fs";
+import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
 import { relative, resolve } from "node:path";
 
 const ROOT = resolve(import.meta.dirname, "../..");
@@ -64,4 +64,18 @@ test("every documentation topic has one variant per supported language", () => {
     for (const [topic, variants] of families) {
         assert.deepEqual([...variants].sort(), [...LANGUAGES].sort(), topic);
     }
+});
+
+test("the template repository does not publish its own changelog", () => {
+    assert.equal(existsSync(resolve(ROOT, "docs/changelog")), false);
+});
+
+test("changelog digests stay outside the module manifest", () => {
+    const manifest = JSON.parse(
+        readFileSync(resolve(ROOT, "manifest.json"), "utf8"),
+    );
+    const changelogEntries = manifest.files.filter(({ path }) =>
+        path.startsWith("docs/changelog/"),
+    );
+    assert.deepEqual(changelogEntries, []);
 });
