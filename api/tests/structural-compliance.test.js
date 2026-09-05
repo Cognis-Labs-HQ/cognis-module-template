@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { readdirSync, readFileSync, statSync } from "node:fs";
+import { lstatSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { createHash } from "node:crypto";
 import { join, relative, resolve } from "node:path";
 
@@ -91,6 +91,21 @@ test("external module metadata and declared files are consistent", () => {
             file.sha256,
             file.path,
         );
+    }
+});
+
+test("manifest inventory excludes aliases and non-regular entries", () => {
+    const manifest = JSON.parse(readFileSync(resolve(ROOT, "manifest.json")));
+    const packagedPaths = new Set(manifest.files.map(({ path }) => path));
+    assert.equal(packagedPaths.has("manifest.json"), false);
+    assert.equal(packagedPaths.has("README.md"), false);
+    assert.equal(packagedPaths.has("AGENTS.md"), false);
+    assert.equal(
+        [...packagedPaths].some((path) => path.startsWith("docs/changelog/")),
+        false,
+    );
+    for (const path of packagedPaths) {
+        assert.ok(lstatSync(resolve(ROOT, path)).isFile(), path);
     }
 });
 

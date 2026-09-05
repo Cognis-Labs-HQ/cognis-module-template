@@ -22,6 +22,13 @@ function headingLevels(path) {
         .map((line) => line.match(/^#+/)[0].length);
 }
 
+test("agent and Copilot instructions stay synchronized", () => {
+    assert.equal(
+        readFileSync(resolve(ROOT, "AGENTS.md"), "utf8"),
+        readFileSync(resolve(ROOT, ".github/copilot-instructions.md"), "utf8"),
+    );
+});
+
 test("documentation follows the hidden heading convention", () => {
     const expected = headingLevels(TEMPLATE).slice(0, 3);
     const violations = markdownFiles(resolve(ROOT, "docs")).flatMap((path) => {
