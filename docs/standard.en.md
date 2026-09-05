@@ -20,7 +20,7 @@ The rules below aggregate the core runtime contract and patterns proven by adjac
 - Preserve the UUID forever and use UUIDs for required components. Keep manifest, package, and lockfile versions synchronized.
 - Declare exact repository-relative entrypoint and asset paths. Keep `routes.json` an array and `package.json` an ES module package.
 - Set `ui.stringsBaseUrl`, namespace locale keys with lowercase period-delimited words, and provide German, English, Indonesian, and Japanese key parity.
-- Declare only necessary routes, capabilities, dependencies, and permissions. Regenerate `manifest.files` last; exclude the manifest and `docs/changelog/`.
+- Declare only necessary routes, capabilities, dependencies, and permissions. Regenerate `manifest.files` last. Exclude the manifest, `docs/changelog/`, the optional root `README.md` compatibility alias, and every symbolic link or other non-regular entry. Localized README files remain regular packaged files.
 
 ### Isolation and Lifecycle
 

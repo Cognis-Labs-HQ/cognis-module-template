@@ -20,7 +20,7 @@ Aturan berikut merangkum kontrak runtime inti dan pola yang telah terbukti pada 
 - Pertahankan UUID selamanya dan gunakan UUID untuk komponen wajib. Selaraskan versi manifes, paket, dan lockfile.
 - Deklarasikan entrypoint dan aset relatif repositori dengan tepat. `routes.json` tetap berupa array dan `package.json` berupa paket ES module.
 - Tetapkan `ui.stringsBaseUrl`, gunakan kunci locale huruf kecil yang dipisahkan titik, dan jaga kesetaraan kunci Jerman, Inggris, Indonesia, dan Jepang.
-- Deklarasikan hanya rute, kapabilitas, dependensi, dan izin yang diperlukan. Buat ulang `manifest.files` terakhir; kecualikan manifes dan `docs/changelog/`.
+- Deklarasikan hanya rute, kapabilitas, dependensi, dan izin yang diperlukan. Buat ulang `manifest.files` terakhir. Kecualikan manifes, `docs/changelog/`, alias kompatibilitas root `README.md` yang opsional, serta setiap tautan simbolis atau entri nonreguler lainnya. Berkas README yang dilokalkan tetap menjadi berkas paket reguler.
 
 ### Isolasi dan Siklus Hidup
 

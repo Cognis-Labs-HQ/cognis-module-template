@@ -20,7 +20,7 @@ Die folgenden Regeln bündeln den Core-Laufzeitvertrag und in benachbarten Cogni
 - Bewahren Sie die UUID dauerhaft und verwenden Sie UUIDs für erforderliche Komponenten. Manifest-, Paket- und Lockfile-Version bleiben synchron.
 - Deklarieren Sie exakte repository-relative Einstiegspunkte und Assets. `routes.json` bleibt ein Array und `package.json` ein ES-Modul-Paket.
 - Setzen Sie `ui.stringsBaseUrl`, verwenden Sie kleingeschriebene, punktgetrennte Lokalisierungsschlüssel und halten Sie Deutsch, Englisch, Indonesisch und Japanisch schlüsselgleich.
-- Deklarieren Sie nur erforderliche Routen, Capabilities, Abhängigkeiten und Rechte. Erzeugen Sie `manifest.files` zuletzt neu; Manifest und `docs/changelog/` bleiben ausgeschlossen.
+- Deklarieren Sie nur erforderliche Routen, Capabilities, Abhängigkeiten und Rechte. Erzeugen Sie `manifest.files` zuletzt neu. Manifest, `docs/changelog/`, der optionale Kompatibilitätsalias `README.md` im Stammverzeichnis sowie alle symbolischen Links und anderen nicht regulären Einträge bleiben ausgeschlossen. Lokalisierte README-Dateien bleiben reguläre Paketdateien.
 
 ### Isolation und Lebenszyklus
 

@@ -1,4 +1,5 @@
 import { createHash } from "node:crypto";
+import { existsSync, lstatSync } from "node:fs";
 import { readFile, writeFile } from "node:fs/promises";
 import { execFileSync } from "node:child_process";
 import { format, resolveConfig } from "prettier";
@@ -15,7 +16,10 @@ const paths = execFileSync(
         (path) =>
             path &&
             path !== "manifest.json" &&
-            !path.startsWith("docs/changelog/"),
+            path !== "README.md" &&
+            !path.startsWith("docs/changelog/") &&
+            existsSync(path) &&
+            lstatSync(path).isFile(),
     )
     .sort();
 manifest.files = await Promise.all(
