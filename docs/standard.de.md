@@ -1,35 +1,63 @@
-# Vorlage für externe Cognis-Module
+# Standard für externe Cognis-Module
 
-Die Vorlage für externe Cognis-Module ist eine installierbare Referenzimplementierung für API-, UI-, CLI-, Persistenz-, Capability-, Flow-, Lokalisierungs-, Test- und Paketierungsverträge.
+Diese Vorlage ist eine installierbare Referenz für isolierte API-, UI-, CLI-, Persistenz-, Capability-, Flow-, Lokalisierungs-, Lebenszyklus-, Test- und Paketverträge. Verwenden Sie sie als Vertragsübersicht, nicht als Generator.
 
 ## Anwendungsbeispiele
 
-- Öffnen Sie nach der Aktivierung `/showcase`, um die lokalisierte Browseroberfläche zu verwenden.
+- Öffnen Sie nach der Aktivierung `/showcase`, um die lokalisierte Page-Composer-Oberfläche zu verwenden.
 - Führen Sie `cognisctl module-template:list` aus, um dieselbe authentifizierte API über die CLI zu nutzen.
-- Lösen Sie `showcase:listItems` über `ctx` auf, um Einträge ohne Import von Modulinterna aufzulisten.
-- Erweitern Sie den Flow `showcase-items`, um Ergebnisse über eine benannte, entfernbare Integrationsstufe anzureichern.
+- Lösen Sie `showcase:listItems` über `ctx` auf, statt Modulinterna zu importieren.
+- Erweitern Sie den Flow `showcase-items` durch eine benannte, entfernbare Stufe.
+- Deaktivieren und reaktivieren Sie das Modul, um wiederholbare Registrierungen zu prüfen.
 
 ## Technische Spezifikation
 
-Die Vorlage zeigt die Grenzen, die jedes eigenständige externe Cognis-Modul einhalten muss.
+Die folgenden Regeln bündeln den Core-Laufzeitvertrag und in benachbarten Cognis-Modulen bewährte Muster.
 
-### Integrationsvertrag
+### Repository- und Manifestvertrag
 
-- `bootstrap.js` ist der einzige Integrationseinstiegspunkt der Plattform.
-- `ctx` stellt Routen, UI-Registrierung, Capabilities, Flows, Authentifizierung, Protokollierung und Persistenzzugriff bereit.
-- Laufzeitimporte bleiben repository-relativ und greifen nie auf Interna von Cognis oder benachbarten Komponenten zu.
-- Bereichsgebundene Registrierungen müssen beim Deaktivieren oder Deinstallieren entfernbar sein.
-- `uninstallModule(ctx, { deleteContent })` muss gespeicherte Inhalte bewahren, sofern der Administrator ihre Löschung nicht anfordert.
+- Ein Repository liefert genau ein Modul. `manifest.json`, `package.json`, `routes.json` und `bootstrap.js` bleiben im Stammverzeichnis.
+- Bewahren Sie die UUID dauerhaft und verwenden Sie UUIDs für erforderliche Komponenten. Manifest-, Paket- und Lockfile-Version bleiben synchron.
+- Deklarieren Sie exakte repository-relative Einstiegspunkte und Assets. `routes.json` bleibt ein Array und `package.json` ein ES-Modul-Paket.
+- Setzen Sie `ui.stringsBaseUrl`, verwenden Sie kleingeschriebene, punktgetrennte Lokalisierungsschlüssel und halten Sie Deutsch, Englisch, Indonesisch und Japanisch schlüsselgleich.
+- Deklarieren Sie nur erforderliche Routen, Capabilities, Abhängigkeiten und Rechte. Erzeugen Sie `manifest.files` zuletzt neu; Manifest und `docs/changelog/` bleiben ausgeschlossen.
 
-### Sicherheit
+### Isolation und Lebenszyklus
 
-- API-Routen authentifizieren und autorisieren vor der Geschäftslogik.
-- Anfragedaten werden an der HTTP-Grenze begrenzt, validiert und normalisiert.
-- Öffentliche Fehler geben keine internen Implementierungsdetails preis.
-- Fehler werden mit sicheren strukturierten Metadaten protokolliert.
+- `bootstrap.js` orchestriert jede Host-Integration über das bereichsgebundene `ctx`; Feature-Implementierung und Cognis-interne Importe gehören nicht hinein.
+- Capabilities sind neutrale Verträge. Doppelpunktgetrennte Capability- und Flow-Segmente verwenden camelCase. Optionale Komponenten werden per Capability erkannt.
+- Wesentliche Orchestrierung verwendet benannte Flows und stabile, entfernbare Stufen. Routen validieren und koordinieren; Capabilities führen anbieterspezifische Arbeit aus.
+- Ein Disposer oder `teardownModule` entfernt ungebundene Timer, Listener, Sockets und Skripte. `uninstallModule(ctx, { deleteContent })` erhält externe Inhalte, sofern deren Löschung nicht ausdrücklich verlangt wurde.
+- Prüfen Sie Installation, Aktivieren–Deaktivieren–Aktivieren und Deinstallation. Keine Route, Asset-Registrierung, UI-Erweiterung, Capability oder Flow-Stufe darf über einen Zyklus hinaus bestehen.
 
-### Freigabeprozess
+### UI und Host-Eigentum
 
-- Halten Sie die Versionen in `manifest.json`, `package.json` und `package-lock.json` synchron und bewahren Sie die Modul-UUID.
-- Führen Sie vor einem Release-Commit `npm install`, `npm test`, `npm run lint`, `npm run manifest:hashes`, `npm run check:manifest` und `git diff --check` aus.
-- Erzeugen Sie `manifest.files` nach der letzten Änderung einer ausgelieferten Datei neu, damit alle repository-relativen Pfade und SHA-256-Prüfsummen überprüfbar bleiben.
+- Erstellen Sie Seiten mit dem Host-Page-Composer und navigieren Sie über den Host-Router. Links dienen der Navigation, Schaltflächen Aktionen.
+- Ein Modul gestaltet nur eigene Nachfahren seines Mount-Roots. Shell, `document.body`, `document.head` und Host-Klassen werden nicht verändert.
+- Beziehen Sie gemeinsame UI-Bausteine und Stile über `ui:reuse`; laden Sie Laufzeitskripte über `ui:resourceLoader` und geben Sie Handles frei.
+- Nutzen Sie Host-Verträge für Toasts, Fehler-/Entscheidungsdialoge, Zeitstempel, Theme, Schrift, Avatar und Fokus. Keine Browserdialoge, Reload-Navigation, beliebigen Statusknoten, CSS-Kommentare oder kopierten Host-Stile.
+- Lokalisieren Sie sichtbare und barrierefreie Texte in allen vier XML-Paketen. Bevorzugen Sie themefähige SVGs gegenüber Emoji und Plattformglyphen.
+
+### API, Daten und Konfiguration
+
+- Validieren, normalisieren, authentifizieren und autorisieren Sie an der Grenze vor der Geschäftslogik. Antworten verwenden stabile Fehler ohne interne Details.
+- Speicherzugriff bleibt hinter `ctx`-Executors und moduleigenen Stores; Abfragen sind parametrisiert und Schemaobjekte namensräumlich getrennt. Keine konkreten Treiber importieren.
+- Erfinden Sie kein Ergebnislimit, wenn der Aufrufer keines angibt. Explizite Limits werden validiert, nicht still begrenzt.
+- Nutzen Sie Manifest-`ui.preferences` und die Modulkonfigurations-API statt einer zweiten Einstellungsseite. Konfiguration übersteht Deaktivierung/Neustart; gespeicherte Passwörter werden nie zurückgegeben.
+- Benutzerspezifische Geheimnisse gehören in den Host-Keyring. IDs und Geheimnisse entstehen mit Web Crypto oder Node Crypto, nie mit `Math.random()`.
+- Protokollieren Sie Zustandsänderungen als `info`, abgefangene Fehler als `error` mit sicheren strukturierten Daten und unbehandelte Fehler als fatal. Beabsichtigte Fallbacks bleiben nie still.
+
+### Struktur und Qualität
+
+- Server, Browser, CLI, Dokumentation, Daten, Werkzeuge und Artwork gehören jeweils nach `api/`, `ui/`, `cli/`, `docs/`, `data/`, `scripts/` oder `tooling/` und `assets/`.
+- Wirklich schichtweit wiederverwendbarer Code gehört in `reuse/`; Feature-Code bleibt beim Eigentümer. Verzeichnisse `shared`, `utils`, `helpers` und `common` vermeiden.
+- Dateien bleiben kohärent und höchstens 1000 Zeilen lang. Verwenden Sie aussagekräftige Namen, lesbaren Kontrollfluss, hilfreiche Einschränkungskommentare und keine veralteten Kompatibilitätsschichten.
+- Tests laufen eigenständig mit lokalen `ctx`-Fakes und decken öffentliche APIs, Capabilities, Flows, Autorisierung, Lokalisierung, Lebenszyklus und Manifestintegrität ab.
+
+### Freigabe-Checkliste
+
+1. Prüfen Sie Abhängigkeits-UUIDs, erforderliche Capabilities, Routenzugriff, Metadaten, Übersetzungen, Artwork und Geheimnisbehandlung.
+2. Synchronisieren Sie bei Vertrags-, Code-, Schema- oder API-Änderungen Manifest-, Paket- und Lockfile-Version.
+3. Führen Sie `npm install`, `npm run lint` und `npm test` aus.
+4. Führen Sie nach der letzten ausgelieferten Dateiänderung `npm run manifest:hashes`, danach `npm run check:manifest` und `git diff --check` aus.
+5. Fügen Sie bei Nicht-Vorlagenmodulen vier lokalisierte `docs/changelog/<branch>.<lang>.md` hinzu und vervollständigen Sie deren Commit-Provenienz ohne Changelog-Digests.
