@@ -79,6 +79,7 @@ test("external module metadata and declared files are consistent", () => {
     const routes = JSON.parse(readFileSync(resolve(ROOT, "routes.json")));
     assert.equal(manifest.version, packageJson.version);
     assert.equal(manifest.version, packageLock.version);
+    assert.equal(manifest.template, true);
     assert.ok(Array.isArray(routes));
     for (const entrypoint of Object.values(manifest.entrypoints)) {
         assert.ok(statSync(resolve(ROOT, entrypoint)).isFile());
@@ -91,6 +92,28 @@ test("external module metadata and declared files are consistent", () => {
             file.sha256,
             file.path,
         );
+    }
+});
+
+test("unprivileged contributions use the module-owned namespace", () => {
+    const manifest = JSON.parse(readFileSync(resolve(ROOT, "manifest.json")));
+    const bootstrap = readFileSync(resolve(ROOT, "bootstrap.js"), "utf8");
+    const ownedPrefix = `${manifest.id}:`;
+    const capabilityIds = manifest.capabilities ?? [];
+    const contributedIds = [
+        ...bootstrap.matchAll(
+            /(?:contributePublicCapability|contributeCapability)\("([^"]+)"/g,
+        ),
+    ].map((match) => match[1]);
+    const flowIds = [...bootstrap.matchAll(/(?:id:|FLOW_ID\s*=)\s*"([^"]+)"/g)]
+        .map((match) => match[1])
+        .filter(
+            (id) =>
+                bootstrap.includes(`registerFlow(${id}`) || id.includes(":"),
+        );
+
+    for (const id of [...capabilityIds, ...contributedIds, ...flowIds]) {
+        assert.ok(id.startsWith(ownedPrefix), id);
     }
 });
 

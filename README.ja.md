@@ -34,7 +34,7 @@ npm run check:manifest
 1. Cognis は `manifest.json`、コンポーネント依存関係、必要なケイパビリティ、ルート、ファイルダイジェストを検証します。
 2. 有効化すると `bootstrapModule(ctx)` が呼ばれます。モジュールは UI/API コントリビューションを登録し、ケイパビリティを公開してフローを拡張します。
 3. API ハンドラーは認証と検証を行います。ストアは `db:executor` を通じてスキーマと永続化を管理します。
-4. UI と CLI は同じ HTTP API を使用します。他のコンポーネントは `ctx` 経由で `showcase:listItems` を利用できます。
+4. UI と CLI は同じ HTTP API を使用します。他のコンポーネントは `ctx` 経由で `module-template:listItems` を利用できます。
 5. スコープ付き登録は無効化時に削除されます。スコープ付き登録の外でタイマー、リスナー、ソケットなどを作成する場合は、明示的な disposer を追加して返してください。
 6. アンインストール時は `uninstallModule(ctx, { deleteContent })` が呼ばれます。管理者がコンテンツ削除を要求した場合に限り、テンプレートはデータベース行を削除します。
 

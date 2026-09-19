@@ -6,8 +6,8 @@ Diese Vorlage ist eine installierbare Referenz für isolierte API-, UI-, CLI-, P
 
 - Öffnen Sie nach der Aktivierung `/showcase`, um die lokalisierte Page-Composer-Oberfläche zu verwenden.
 - Führen Sie `cognisctl module-template:list` aus, um dieselbe authentifizierte API über die CLI zu nutzen.
-- Lösen Sie `showcase:listItems` über `ctx` auf, statt Modulinterna zu importieren.
-- Erweitern Sie den Flow `showcase-items` durch eine benannte, entfernbare Stufe.
+- Lösen Sie `module-template:listItems` über `ctx` auf, statt Modulinterna zu importieren.
+- Erweitern Sie den Flow `module-template:showcaseItems` durch eine benannte, entfernbare Stufe.
 - Deaktivieren und reaktivieren Sie das Modul, um wiederholbare Registrierungen zu prüfen.
 
 ## Technische Spezifikation
@@ -25,7 +25,7 @@ Die folgenden Regeln bündeln den Core-Laufzeitvertrag und in benachbarten Cogni
 ### Isolation und Lebenszyklus
 
 - `bootstrap.js` orchestriert jede Host-Integration über das bereichsgebundene `ctx`; Feature-Implementierung und Cognis-interne Importe gehören nicht hinein.
-- Capabilities sind neutrale Verträge. Doppelpunktgetrennte Capability- und Flow-Segmente verwenden camelCase. Optionale Komponenten werden per Capability erkannt.
+- Capabilities sind neutrale Verträge. Nicht privilegierte Module stellen beigetragenen Capability- und Flow-IDs ihre Manifest-ID voran; doppelpunktgetrennte Segmente verwenden camelCase. Optionale Komponenten werden per Capability erkannt.
 - Wesentliche Orchestrierung verwendet benannte Flows und stabile, entfernbare Stufen. Routen validieren und koordinieren; Capabilities führen anbieterspezifische Arbeit aus.
 - Ein Disposer oder `teardownModule` entfernt ungebundene Timer, Listener, Sockets und Skripte. `uninstallModule(ctx, { deleteContent })` erhält externe Inhalte, sofern deren Löschung nicht ausdrücklich verlangt wurde.
 - Prüfen Sie Installation, Aktivieren–Deaktivieren–Aktivieren und Deinstallation. Keine Route, Asset-Registrierung, UI-Erweiterung, Capability oder Flow-Stufe darf über einen Zyklus hinaus bestehen.
