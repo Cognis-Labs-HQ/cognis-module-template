@@ -6,8 +6,8 @@ Templat ini adalah referensi yang dapat dipasang untuk kontrak API, UI, CLI, per
 
 - Buka `/showcase` setelah modul diaktifkan untuk memakai UI page composer yang dilokalkan.
 - Jalankan `cognisctl module-template:list` untuk memakai API terautentikasi yang sama melalui CLI.
-- Gunakan `showcase:listItems` melalui `ctx`, bukan dengan mengimpor internal modul.
-- Perluas alur `showcase-items` melalui tahap bernama yang dapat dilepas.
+- Gunakan `module-template:listItems` melalui `ctx`, bukan dengan mengimpor internal modul.
+- Perluas alur `module-template:showcaseItems` melalui tahap bernama yang dapat dilepas.
 - Nonaktifkan lalu aktifkan kembali modul untuk memverifikasi registrasi tercakup dapat diulang.
 
 ## Spesifikasi Teknis
@@ -25,7 +25,7 @@ Aturan berikut merangkum kontrak runtime inti dan pola yang telah terbukti pada 
 ### Isolasi dan Siklus Hidup
 
 - `bootstrap.js` mengorkestrasi seluruh integrasi host melalui `ctx` tercakup; implementasi fitur dan impor internal Cognis tidak berada di sana.
-- Kapabilitas adalah kontrak netral. Segmen nama kapabilitas dan alur yang dipisahkan titik dua memakai camelCase. Temukan komponen opsional melalui kapabilitas.
+- Kapabilitas adalah kontrak netral. Modul tanpa privilege mengawali ID kapabilitas dan alur yang dikontribusikan dengan ID manifesnya; segmen yang dipisahkan titik dua memakai camelCase. Temukan komponen opsional melalui kapabilitas.
 - Orkestrasi bermakna memakai alur bernama dan tahap stabil yang dapat dilepas. Handler rute memvalidasi dan mengoordinasikan; kapabilitas mengerjakan pekerjaan khusus penyedia.
 - Disposer atau `teardownModule` menghapus timer, listener, soket, dan skrip yang tidak tercakup. `uninstallModule(ctx, { deleteContent })` mempertahankan konten eksternal kecuali penghapusan diminta secara eksplisit.
 - Uji pemasangan, aktif–nonaktif–aktif, dan pencopotan. Tidak boleh ada rute, registrasi aset, kontribusi UI, kapabilitas, atau hook alur yang bocor antarsiklus.

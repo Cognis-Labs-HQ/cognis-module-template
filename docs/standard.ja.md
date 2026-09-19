@@ -6,8 +6,8 @@
 
 - モジュールを有効化した後に `/showcase` を開き、ローカライズ済みの Page Composer UI を使用します。
 - `cognisctl module-template:list` を実行し、CLI から同じ認証済み API を使用します。
-- モジュール内部をインポートせず、`ctx` を通して `showcase:listItems` を解決します。
-- 名前付きで削除可能なステージから `showcase-items` フローを拡張します。
+- モジュール内部をインポートせず、`ctx` を通して `module-template:listItems` を解決します。
+- 名前付きで削除可能なステージから `module-template:showcaseItems` フローを拡張します。
 - モジュールを無効化して再度有効化し、スコープ付き登録の再現性を確認します。
 
 ## 技術仕様
@@ -25,7 +25,7 @@
 ### 分離とライフサイクル
 
 - `bootstrap.js` はスコープ付き `ctx` を介してホスト統合のみを調整し、機能実装や Cognis 内部のインポートを含めません。
-- Capability は中立的な契約です。コロン区切りの Capability 名とフロー名の各セグメントには camelCase を使います。任意コンポーネントは Capability で検出します。
+- Capability は中立的な契約です。非特権モジュールは、提供する Capability ID とフロー ID の先頭にマニフェスト ID を付けます。コロン区切りの各セグメントには camelCase を使い、任意コンポーネントは Capability で検出します。
 - 意味のあるオーケストレーションには名前付きフローと安定した削除可能なステージを使います。ルートハンドラーは検証と調整を行い、Capability がプロバイダー固有の処理を実行します。
 - Disposer または `teardownModule` は、スコープ外のタイマー、リスナー、ソケット、スクリプトを削除します。`uninstallModule(ctx, { deleteContent })` は明示的に削除を要求されない限り外部コンテンツを保持します。
 - インストール、有効化–無効化–再有効化、アンインストールを確認します。ルート、アセット登録、UI コントリビューション、Capability、フックをサイクル間に残しません。

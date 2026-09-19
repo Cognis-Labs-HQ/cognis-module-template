@@ -34,7 +34,7 @@ Install the repository as a Cognis module source, review its permissions, enable
 1. Cognis validates `manifest.json`, component dependencies, capability requirements, routes, and file digests.
 2. Enabling calls `bootstrapModule(ctx)`. The module registers UI/API contributions, publishes a capability, and extends a flow.
 3. API handlers authenticate and validate. The store owns schema and persistence through `db:executor`.
-4. UI and CLI consume the same HTTP API. Other components may consume `showcase:listItems` through `ctx`.
+4. UI and CLI consume the same HTTP API. Other components may consume `module-template:listItems` through `ctx`.
 5. Scoped registrations are removed when disabled. Add and return an explicit disposer if you create timers, listeners, sockets, or other resources outside scoped registrations.
 6. Uninstalling calls `uninstallModule(ctx, { deleteContent })`; the template deletes its database rows only when the administrator requests content deletion.
 

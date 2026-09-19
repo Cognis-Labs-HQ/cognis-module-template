@@ -58,9 +58,12 @@ test("registers template surfaces through ctx", () => {
     bootstrapModule(createContext(registrations));
 
     assert.ok(registrations.routes.includes("/showcase"));
-    assert.equal(registrations.capabilities[0][0], "showcase:listItems");
-    assert.equal(registrations.flows[0].id, "showcase-items");
-    assert.equal(registrations.extensions[0][0], "showcase-items");
+    assert.equal(registrations.capabilities[0][0], "module-template:listItems");
+    assert.equal(registrations.flows[0].id, "module-template:showcaseItems");
+    assert.equal(
+        registrations.extensions[0][0],
+        "module-template:showcaseItems",
+    );
 });
 
 test("uninstall deletes saved content only when requested", async () => {

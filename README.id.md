@@ -34,7 +34,7 @@ Pasang repositori sebagai sumber modul Cognis, tinjau izinnya, aktifkan, lalu bu
 1. Cognis memvalidasi `manifest.json`, dependensi komponen, kebutuhan kapabilitas, rute, dan hash berkas.
 2. Aktivasi memanggil `bootstrapModule(ctx)`. Modul mendaftarkan kontribusi UI/API, menerbitkan kapabilitas, dan memperluas flow.
 3. Handler API mengautentikasi dan memvalidasi. Store memiliki skema dan persistensi melalui `db:executor`.
-4. UI dan CLI memakai API HTTP yang sama. Komponen lain dapat memakai `showcase:listItems` melalui `ctx`.
+4. UI dan CLI memakai API HTTP yang sama. Komponen lain dapat memakai `module-template:listItems` melalui `ctx`.
 5. Registrasi bercakupan dihapus ketika dinonaktifkan. Tambahkan dan kembalikan disposer eksplisit jika Anda membuat timer, listener, socket, atau sumber daya lain di luar registrasi bercakupan.
 6. Penghapusan memanggil `uninstallModule(ctx, { deleteContent })`; templat hanya menghapus baris basis datanya ketika administrator meminta penghapusan konten.
 

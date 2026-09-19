@@ -6,8 +6,8 @@ This template is an installable reference for isolated API, UI, CLI, persistence
 
 - Open `/showcase` after enabling the module to use its localized page-composer UI.
 - Run `cognisctl module-template:list` to consume the same authenticated API through the CLI.
-- Resolve `showcase:listItems` through `ctx` instead of importing module internals.
-- Extend the `showcase-items` flow through a named, removable stage.
+- Resolve `module-template:listItems` through `ctx` instead of importing module internals.
+- Extend the `module-template:showcaseItems` flow through a named, removable stage.
 - Disable and re-enable the module to verify that scoped registrations are repeatable.
 
 ## Technical Specification
@@ -25,7 +25,7 @@ The rules below aggregate the core runtime contract and patterns proven by adjac
 ### Isolation and Lifecycle
 
 - `bootstrap.js` orchestrates all host integration through its scoped `ctx`; it does not contain feature implementation or import Cognis internals.
-- Capabilities are neutral contracts. Colon-delimited capability and flow-name segments use camel case. Optional components are discovered by capability.
+- Capabilities are neutral contracts. Unprivileged modules prefix contributed capability and flow IDs with their manifest ID; colon-delimited segments use camel case. Optional components are discovered by capability.
 - Meaningful orchestration uses named flows and stable, removable stages. Route handlers validate and coordinate while capabilities perform provider-specific work.
 - A disposer or `teardownModule` removes unscoped timers, listeners, sockets, and scripts. `uninstallModule(ctx, { deleteContent })` preserves external content unless deletion was explicitly requested.
 - Verify install, enable-disable-enable, and uninstall. No route, asset registration, UI contribution, capability, or flow hook may leak across cycles.

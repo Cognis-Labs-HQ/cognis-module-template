@@ -34,7 +34,7 @@ Installiere das Repository als Cognis-Modulquelle, prüfe seine Berechtigungen, 
 1. Cognis validiert `manifest.json`, Komponentenabhängigkeiten, Capability-Anforderungen, Routen und Datei-Hashes.
 2. Beim Aktivieren wird `bootstrapModule(ctx)` aufgerufen. Das Modul registriert UI/API-Beiträge, veröffentlicht eine Capability und erweitert einen Flow.
 3. API-Handler authentifizieren und validieren. Der Store verwaltet Schema und Persistenz über `db:executor`.
-4. UI und CLI verwenden dieselbe HTTP-API. Andere Komponenten können `showcase:listItems` über `ctx` nutzen.
+4. UI und CLI verwenden dieselbe HTTP-API. Andere Komponenten können `module-template:listItems` über `ctx` nutzen.
 5. Bereichsgebundene Registrierungen werden beim Deaktivieren entfernt. Erstelle und liefere einen expliziten Disposer zurück, wenn du Timer, Listener, Sockets oder andere Ressourcen außerhalb solcher Registrierungen anlegst.
 6. Beim Deinstallieren wird `uninstallModule(ctx, { deleteContent })` aufgerufen; die Vorlage löscht ihre Datenbankzeilen nur, wenn die Administration das Löschen der Inhalte anfordert.
 

@@ -3,7 +3,7 @@ import { ShowcaseStore } from "./api/store.js";
 import { registerUi } from "./api/ui.js";
 
 const FLOW = {
-    id: "showcase-items",
+    id: "module-template:showcaseItems",
     description: "Let modules enrich showcase items without direct imports.",
     stages: ["validate", "enrich", "present"],
 };
@@ -29,10 +29,13 @@ export function bootstrapModule(ctx) {
     ctx.flow.extend(
         FLOW.id,
         "enrich",
-        { id: "module-template:add-source" },
+        { id: "module-template:addSource" },
         ({ input }) => ({ ...input, source: "module-template" }),
     );
-    ctx.contributePublicCapability("showcase:listItems", service.listItems);
+    ctx.contributePublicCapability(
+        "module-template:listItems",
+        service.listItems,
+    );
 
     ctx.log?.("info", "Module template enabled.", {
         component: "module-template",
