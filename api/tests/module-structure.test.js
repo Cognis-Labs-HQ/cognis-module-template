@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { mkdtemp, mkdir, writeFile, rm } from "node:fs/promises";
+import { mkdtemp, mkdir, writeFile, readFile, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
 import { validateModuleStructure } from "../../scripts/module-structure.js";
@@ -30,4 +30,27 @@ test("structure validation rejects misplaced CSS and flat route handlers", async
     await writeFile(join(root, "ui/example.css"), "");
     await writeFile(join(root, "api/example-routes.js"), "");
     assert.equal((await validateModuleStructure(root)).length, 2);
+});
+
+test("locale namespaces retain the exact hyphenated module ID", async () => {
+    const manifest = JSON.parse(
+        await readFile(new URL("../../manifest.json", import.meta.url), "utf8"),
+    );
+    const prefix = `module.${manifest.id}.`;
+    for (const locale of ["de", "en", "id", "ja"]) {
+        const xml = await readFile(
+            new URL(
+                `../../ui/languages/${locale}/strings.xml`,
+                import.meta.url,
+            ),
+            "utf8",
+        );
+        for (const match of xml.matchAll(/<string name="(module\.[^"]+)"/g)) {
+            assert.ok(match[1].startsWith(prefix), match[1]);
+            assert.match(
+                match[1].slice(prefix.length),
+                /^[a-z0-9]+(?:\.[a-z0-9]+)*$/,
+            );
+        }
+    }
 });

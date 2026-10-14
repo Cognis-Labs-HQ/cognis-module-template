@@ -65,3 +65,7 @@ Die folgenden Regeln bündeln den Core-Laufzeitvertrag und in benachbarten Cogni
 Jedes neue externe Modul beginnt mit dieser Vorlage. Einmalig eine eigene Produkt-UUID erzeugen, Beispielmetadaten und Namensräume ersetzen, AGENTS.md und Prüfwerkzeuge behalten. Domänenrouten liegen in `api/routes/<domain>/`, Styles in `ui/styles/`, Markup in `ui/templates/` und Release-Notizen in `docs/changelog/`. API-Lese- und Schreibaktionen durchlaufen registrierte Stufen; Browserseiten nutzen Page Composer und begrenzte Navigation.
 
 Einstiegspunkte und Bildziele müssen reguläre Dateien innerhalb des Checkouts sein, auch nach Pfadauflösung. Diese Ziele werden vor Inventar-Hashes geprüft. Entwicklerdokumente beschreiben öffentliche Verträge und verweisen für Veröffentlichungsmetadaten auf Manifeste. Veröffentlichte Flow-Stage-IDs bleiben erhalten. `mountWhenDirect(mount)` liefert das Navigations-AbortSignal des Hosts; es wird nach asynchroner Initialisierung vor der Erstellung von UI-Ressourcen geprüft.
+
+### Modul-IDs in Übersetzungen erhalten
+
+Übersetzungsschlüssel verwenden `module.<manifest.id>.<feature>.<label>`. Eine mehrteilige Modul-ID bleibt mit ihren Bindestrichen erhalten; für `terms-of-service` lautet ein Schlüssel `module.terms-of-service.admin.title`. Der Suffix nach der Modul-ID verwendet kleingeschriebene, durch Punkte getrennte Wörter. Manifest-Metadaten, XML-Dateien und Codeverweise müssen denselben Namensraum verwenden.

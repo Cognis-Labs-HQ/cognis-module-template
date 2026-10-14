@@ -85,7 +85,7 @@ export async function mount(root, { signal: mountSignal } = {}) {
                 if (!created.ok) throw new Error("Item creation failed.");
                 await loadItems();
                 uiCtx.capabilities.get("ui:showToast")(
-                    i18n.t("module.module_template.item.created"),
+                    i18n.t("module.module-template.item.created"),
                     { variant: "success" },
                 );
             } catch (error) {
@@ -97,11 +97,11 @@ export async function mount(root, { signal: mountSignal } = {}) {
     const composer = createPageComposer(root, {
         i18n,
         allowCustomization: false,
-        pageContext: { title: i18n.t("module.module_template.title") },
+        pageContext: { title: i18n.t("module.module-template.title") },
         elements: [
             {
                 id: "module-template-showcase",
-                label: i18n.t("module.module_template.title"),
+                label: i18n.t("module.module-template.title"),
                 pinned: true,
                 gridSize: { default: [12, 4] },
                 render: () => template,

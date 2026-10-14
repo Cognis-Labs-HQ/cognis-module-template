@@ -9,7 +9,7 @@ const modules = {
     "api-client.js": {
         apiFetch: async () => {
             if (markupWait) await markupWait;
-            return new Response("<p>{{module.module_template.title}}</p>");
+            return new Response("<p>{{module.module-template.title}}</p>");
         },
     },
     "i18n.js": {

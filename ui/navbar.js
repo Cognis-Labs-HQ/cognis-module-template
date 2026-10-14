@@ -9,7 +9,7 @@ export async function mountProvider(ctx) {
     if (!navbar)
         throw new Error("Required UI capability unavailable: ui:navbarLinks");
     return navbar.contribute("module-template:showcase", {
-        label: i18n.t("module.module_template.nav"),
+        label: i18n.t("module.module-template.nav"),
         href: "/showcase",
     });
 }

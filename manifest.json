@@ -1,8 +1,8 @@
 {
     "id": "module-template",
     "uuid": "cc810afb-4fe6-5ef7-8f0b-e23676e01db3",
-    "name": "module.module_template.name",
-    "version": "1.0.9",
+    "name": "module.module-template.name",
+    "version": "1.0.10",
     "class": "extension",
     "template": true,
     "coreApiVersion": "v1",
@@ -24,9 +24,9 @@
         "ui:log",
         "ui:showToast"
     ],
-    "summary": "module.module_template.summary",
-    "description": "module.module_template.description",
-    "categories": ["module.module_template.category_developer_tools"],
+    "summary": "module.module-template.summary",
+    "description": "module.module-template.description",
+    "categories": ["module.module-template.category.developer.tools"],
     "license": "AGPL-3.0-or-later",
     "repository": "https://github.com/Cognis-Labs-HQ/cognis-module-template",
     "homepage": "https://github.com/Cognis-Labs-HQ/cognis-module-template#readme",
@@ -37,9 +37,9 @@
         "banner": "assets/banner.svg"
     },
     "tags": [
-        "module.module_template.tag_template",
-        "module.module_template.tag_development",
-        "module.module_template.tag_example"
+        "module.module-template.tag.template",
+        "module.module-template.tag.development",
+        "module.module-template.tag.example"
     ],
     "files": [
         {
@@ -60,7 +60,7 @@
         },
         {
             "path": ".github/copilot-instructions.md",
-            "sha256": "441300ff8a29cb3d5cd1771475c69f2b9bf5f4d2f054bd90affa7cd8defd22bf"
+            "sha256": "c40110a5ec558db9fe6e441aa8b4c6d13bd166dacb26e2cd4d6d69e520923c47"
         },
         {
             "path": ".gitignore",
@@ -136,7 +136,7 @@
         },
         {
             "path": "api/tests/module-structure.test.js",
-            "sha256": "64f72e6c7e05c87fcc9dee01844e4cf46d9af8147bc862b30f65c64c299307d0"
+            "sha256": "6caf3c788d672df76dc7dbd8a5ddae065ad98a931b929c8da8110587c9cb8910"
         },
         {
             "path": "api/tests/store.test.js",
@@ -176,27 +176,27 @@
         },
         {
             "path": "docs/index.de.md",
-            "sha256": "331d64f573d11a4b44b27d523266f195aa8d246e6814f3ee9a26e703dac8e17f"
+            "sha256": "a4c3650530c445e468103a6d2f38809a201d5e4c4d732940a65693de7b0fb4f9"
         },
         {
             "path": "docs/index.en.md",
-            "sha256": "0f8855e7eb4cfae06f1fd81ee8bb451bf9d79a588b5b61b8bad3ca52c3c614b2"
+            "sha256": "eae2aaa9dbfe64c51df4407e1ac6d53ef785809a8fcb04337fe89ad950684481"
         },
         {
             "path": "docs/index.id.md",
-            "sha256": "b571dda61012cfc4616d828f4268197d2c8a3d9288a25996ca0dc3f823cf00c0"
+            "sha256": "4d39995c44147d65d316e2d6748ee535e5b71d93a287dbbecf7e8c8a6760d5f0"
         },
         {
             "path": "docs/index.ja.md",
-            "sha256": "71b41dff37d021cf09e5c29cdb0498220d2c1220b44b34d6530ed4ef55972882"
+            "sha256": "91e4a7a0082b7a920c00e483fe645dfe2656dd9852fa7fd133ca91232930f171"
         },
         {
             "path": "package-lock.json",
-            "sha256": "c8e1342b8a227c28aa05efb2e741c516fd0227e9a4cee9ddb76a62ca56ce2123"
+            "sha256": "6b1c8cbfcdfa9454d807eca9fe5ba354518a14133ca580cf03e57d4afe15bfc8"
         },
         {
             "path": "package.json",
-            "sha256": "937d90c647cc363069be23eac1788a115374e3102036bea4bd412023194d084e"
+            "sha256": "ca101456b03c1cf0db8891138eaeca27406b26d02988f355f134e2d7fb922071"
         },
         {
             "path": "routes.json",
@@ -224,7 +224,7 @@
         },
         {
             "path": "ui/app.js",
-            "sha256": "ee17ccf34d0965d6cca26f951a716bf486c178c9aab9d6bebdf61e4cc84ce4ed"
+            "sha256": "69cd22215c7214ed5d57cba023f1d4213b3f38e3cd9382477ada237f563015ba"
         },
         {
             "path": "ui/index.html",
@@ -232,23 +232,23 @@
         },
         {
             "path": "ui/languages/de/strings.xml",
-            "sha256": "be74f883ede637f029cbd188a7075c8656f1c0cbcf967aa1309da990e5f68f3c"
+            "sha256": "2e630513d48320d834905d7237463909b7f44b631f0ed0b9d1b3798cc60cffb8"
         },
         {
             "path": "ui/languages/en/strings.xml",
-            "sha256": "792099db59565ff6f257455553da1f6001ea3ac6631a2ece46944bc1e6dfcbab"
+            "sha256": "32f19be38150fee3cf8d3667bc050d8a993c39efb3393c321dbfd7d6d7afc8f4"
         },
         {
             "path": "ui/languages/id/strings.xml",
-            "sha256": "77d9904884ff3a39f8993f2d4e3cf244562cfada814bc0b113c4c0755b66e631"
+            "sha256": "2b78bf5968ca918241af14b81c77cc828d66eda5ab583dd7012d9c09c9b483b2"
         },
         {
             "path": "ui/languages/ja/strings.xml",
-            "sha256": "d94b8df13e8b3738680c363e60e447d5be1157c7ced0df100a1f36f8df00f75a"
+            "sha256": "24b81b50f2799c1d38ad6b63fdd191fd8da44bbcdf4abf51065d85289015a9d8"
         },
         {
             "path": "ui/navbar.js",
-            "sha256": "db8f8627eff5378189db93cb7dd925b069c0c5e888963b3ab829099467d623c4"
+            "sha256": "6cc949f6b95c19644a972d598d0b3d92c144bf46e007283023a87d9abbd36f23"
         },
         {
             "path": "ui/reuse/resources.js",
@@ -260,7 +260,7 @@
         },
         {
             "path": "ui/templates/showcase.html",
-            "sha256": "9ed081665cff70f31d5024a0e807de9fd0d60350381dcfe8ecb7e97cef79f342"
+            "sha256": "f7711ff9dcd0465ce4ff692d97557372a870f48d6d0620cb1e37b8988855aaa4"
         },
         {
             "path": "ui/tests/ambiguous-names.test.js",
@@ -272,7 +272,7 @@
         },
         {
             "path": "ui/tests/mount-lifecycle.test.js",
-            "sha256": "4ee6df1353c914a710fdca09a721a144057bb89dfdd874f09aa1724bdac485aa"
+            "sha256": "285dbea98e9bebaf08cfc0dbbe325283450b321f1917d3a2a75033bd95a55eaf"
         },
         {
             "path": "ui/tests/regression.test.js",

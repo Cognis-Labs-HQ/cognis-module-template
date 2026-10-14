@@ -65,3 +65,7 @@ The rules below aggregate the core runtime contract and patterns proven by adjac
 Start from this template for every new external module. Generate a new product UUID once, replace example metadata and namespaces, and retain AGENTS.md plus validation tools. Domain routes live in `api/routes/<domain>/`, styles in `ui/styles/`, markup in `ui/templates/`, and release notes in `docs/changelog/`. API reads and writes execute their registered stages; browser mounts use page composer and scoped navigation.
 
 Entrypoints and artwork targets must be regular files inside the checkout, including their resolved paths. Validate these targets before inventory hashes. Developer documents describe public contracts and link manifests for release metadata. Preserve published flow-stage IDs. `mountWhenDirect(mount)` supplies the host navigation AbortSignal; check it after awaited initialization before creating UI resources.
+
+### Preserve module IDs in locale keys
+
+Locale keys use `module.<manifest.id>.<feature>.<label>`. Keep a multiword module ID intact with its hyphens; for `terms-of-service`, use `module.terms-of-service.admin.title`. The suffix after the module ID uses lowercase period-delimited words. Manifest metadata, XML bundles and code references must use the same namespace.
