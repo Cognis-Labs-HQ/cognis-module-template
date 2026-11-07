@@ -2,7 +2,7 @@
     "id": "module-template",
     "uuid": "cc810afb-4fe6-5ef7-8f0b-e23676e01db3",
     "name": "module.module_template.name",
-    "version": "1.0.9",
+    "version": "1.0.12",
     "class": "extension",
     "template": true,
     "coreApiVersion": "v1",
@@ -60,7 +60,7 @@
         },
         {
             "path": ".github/copilot-instructions.md",
-            "sha256": "ab86bf44ff6006763d2e3646fc4ebed68643b571d6807dca040aa637d819f613"
+            "sha256": "dc5d1bc53ce28455c67214526fd8251860713f053f5609447a3388cd13f03062"
         },
         {
             "path": ".gitignore",
@@ -192,11 +192,11 @@
         },
         {
             "path": "package-lock.json",
-            "sha256": "c8e1342b8a227c28aa05efb2e741c516fd0227e9a4cee9ddb76a62ca56ce2123"
+            "sha256": "93358ddd43254d17fd26f6aca0b983cbb67ef885f2dccb174ebce2c6d0d1dcf5"
         },
         {
             "path": "package.json",
-            "sha256": "937d90c647cc363069be23eac1788a115374e3102036bea4bd412023194d084e"
+            "sha256": "15ec56c6daa1bc94a6b555da70760f586a4d592ebfb6bfebbc5747682d4ffc42"
         },
         {
             "path": "routes.json",
