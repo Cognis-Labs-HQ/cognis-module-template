@@ -1,8 +1,8 @@
 {
     "id": "module-template",
     "uuid": "cc810afb-4fe6-5ef7-8f0b-e23676e01db3",
-    "name": "module.module_template.name",
-    "version": "1.0.9",
+    "name": "module.module.template.name",
+    "version": "1.0.13",
     "class": "extension",
     "template": true,
     "coreApiVersion": "v1",
@@ -24,9 +24,9 @@
         "ui:log",
         "ui:showToast"
     ],
-    "summary": "module.module_template.summary",
-    "description": "module.module_template.description",
-    "categories": ["module.module_template.category_developer_tools"],
+    "summary": "module.module.template.summary",
+    "description": "module.module.template.description",
+    "categories": ["module.module.template.category.developer.tools"],
     "license": "AGPL-3.0-or-later",
     "repository": "https://github.com/Cognis-Labs-HQ/cognis-module-template",
     "homepage": "https://github.com/Cognis-Labs-HQ/cognis-module-template#readme",
@@ -37,9 +37,9 @@
         "banner": "assets/banner.svg"
     },
     "tags": [
-        "module.module_template.tag_template",
-        "module.module_template.tag_development",
-        "module.module_template.tag_example"
+        "module.module.template.tag.template",
+        "module.module.template.tag.development",
+        "module.module.template.tag.example"
     ],
     "files": [
         {
@@ -60,7 +60,7 @@
         },
         {
             "path": ".github/copilot-instructions.md",
-            "sha256": "ab86bf44ff6006763d2e3646fc4ebed68643b571d6807dca040aa637d819f613"
+            "sha256": "054825e70b793920c09cdc8f25c52bfb3b9eb2c5afbd78475e218095210c0b7a"
         },
         {
             "path": ".gitignore",
@@ -136,7 +136,7 @@
         },
         {
             "path": "api/tests/module-structure.test.js",
-            "sha256": "64f72e6c7e05c87fcc9dee01844e4cf46d9af8147bc862b30f65c64c299307d0"
+            "sha256": "45cd21b2b31873c1831e52e3a1cfe97c5e52318bd99cb18ded73d21c9c74c83b"
         },
         {
             "path": "api/tests/store.test.js",
@@ -192,11 +192,11 @@
         },
         {
             "path": "package-lock.json",
-            "sha256": "c8e1342b8a227c28aa05efb2e741c516fd0227e9a4cee9ddb76a62ca56ce2123"
+            "sha256": "4ce2ab30542b5d05e718c8fc6717967bd5cf62eefc3fa5faf610a50b9e7796dc"
         },
         {
             "path": "package.json",
-            "sha256": "937d90c647cc363069be23eac1788a115374e3102036bea4bd412023194d084e"
+            "sha256": "84c4792761905a165bdefce40eba3576377adea984d4d8304226515cabc352ee"
         },
         {
             "path": "routes.json",
@@ -224,7 +224,7 @@
         },
         {
             "path": "ui/app.js",
-            "sha256": "ee17ccf34d0965d6cca26f951a716bf486c178c9aab9d6bebdf61e4cc84ce4ed"
+            "sha256": "2d9511c1d2b3d72cf672b3fedecd406a3eca664f5e7b01c51ba193b48f808ff7"
         },
         {
             "path": "ui/index.html",
@@ -232,23 +232,23 @@
         },
         {
             "path": "ui/languages/de/strings.xml",
-            "sha256": "be74f883ede637f029cbd188a7075c8656f1c0cbcf967aa1309da990e5f68f3c"
+            "sha256": "6965d7153dc2d4b1a86cf5ac8258638954dd385026f3641b8c6488260e54b770"
         },
         {
             "path": "ui/languages/en/strings.xml",
-            "sha256": "792099db59565ff6f257455553da1f6001ea3ac6631a2ece46944bc1e6dfcbab"
+            "sha256": "ea50e2ab02cb99fad354e0908fc546eb19c609115f0ef5934a1e0ff7316e5fd2"
         },
         {
             "path": "ui/languages/id/strings.xml",
-            "sha256": "77d9904884ff3a39f8993f2d4e3cf244562cfada814bc0b113c4c0755b66e631"
+            "sha256": "d00210ba6f7ef6d1780b7e5ff0e8588a55b2b7608eded3de74cfc9f78c1db689"
         },
         {
             "path": "ui/languages/ja/strings.xml",
-            "sha256": "d94b8df13e8b3738680c363e60e447d5be1157c7ced0df100a1f36f8df00f75a"
+            "sha256": "b387ebb482444bc96ac74d2b29834c78579be7ddbbf0fec353addd24dd559318"
         },
         {
             "path": "ui/navbar.js",
-            "sha256": "db8f8627eff5378189db93cb7dd925b069c0c5e888963b3ab829099467d623c4"
+            "sha256": "0bc29b9ee215e54b604acad21fe3c9f01eb0d1300183c94e21e847c5b8c1e2c4"
         },
         {
             "path": "ui/reuse/resources.js",
@@ -260,7 +260,7 @@
         },
         {
             "path": "ui/templates/showcase.html",
-            "sha256": "9ed081665cff70f31d5024a0e807de9fd0d60350381dcfe8ecb7e97cef79f342"
+            "sha256": "99f0504691e29495b03c4fffe7e4f096494caebbc109086c3498856525c7d014"
         },
         {
             "path": "ui/tests/ambiguous-names.test.js",
@@ -272,7 +272,7 @@
         },
         {
             "path": "ui/tests/mount-lifecycle.test.js",
-            "sha256": "4ee6df1353c914a710fdca09a721a144057bb89dfdd874f09aa1724bdac485aa"
+            "sha256": "a875dae4805a1de89ef6b3b21e6ab368aae898f3240d3b2bebd0eb4d15ba924b"
         },
         {
             "path": "ui/tests/regression.test.js",
