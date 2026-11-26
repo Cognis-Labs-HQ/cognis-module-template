@@ -1,16 +1,37 @@
-# External Module Template
+# Technical Reference
+
+Public interfaces, configuration and lifecycle of Module Template.
+
+## Interfaces
 
 Create every new external Cognis module from this repository. The installable showcase demonstrates UI, API, database, CLI, capabilities, flows, localization, lifecycle tests and package integrity. Replace its example identity and content while retaining the contributor standard and checks.
 
-## Usage Examples
+## Configuration
 
-- Open `/showcase` after enabling the module to use its localized page-composer UI.
-- Run `cognisctl modules:module-template:list` to consume the same authenticated API through the CLI.
-- Resolve `module-template:listItems` through `ctx` instead of importing module internals.
-- Extend the `module-template:listItems` flow through a named, removable stage.
-- Disable and re-enable the module to verify that scoped registrations are repeatable.
+The showcase has no module preference form. Its item store uses the injected `db:executor`; `requires` and `requiresCapabilities` in the manifest define installation prerequisites. New products replace the example identity once while keeping their own UUID stable.
 
-## Technical Specification
+### API, Data, and Configuration
+
+- Validate, normalize, authenticate, and authorize at the boundary before business logic. Return stable errors without internal details.
+- Keep storage behind ctx-provided executors and module-owned stores; parameterize queries and namespace schema objects. Never import a concrete driver.
+- Do not invent a result limit when callers omit one. Validate explicitly requested limits without silently clamping them.
+- Use manifest `ui.preferences` plus the module config API for administrator settings, not a second settings screen. Preserve config across disable/restart and never return stored passwords.
+- Put user secrets in the host keyring. Generate identifiers and secrets with Web Crypto or Node Crypto, never `Math.random()`.
+- Log state changes at `info`, caught failures at `error` with safe structured context, and uncaught failures as fatal. Intentional fallbacks are logged, never silent.
+
+### Release Checklist
+
+1. Review dependency UUIDs, required capabilities, route access, metadata, translations, artwork, and secret handling.
+2. Synchronize the manifest, package, and lockfile versions for contract, code, schema, or API changes.
+3. Run `npm install`, `npm run lint`, and `npm test`.
+4. Run `npm run manifest:hashes` after the final shipped-file edit, then `npm run check:manifest` and `git diff --check`.
+5. For non-template modules, add the four localized `docs/changelog/<branch>.<lang>.md` files and finish their commit provenance without digesting changelogs.
+
+Start from this template for every new external module. Generate a new product UUID once, replace example metadata and namespaces, and retain AGENTS.md plus validation tools. Domain routes live in `api/routes/<domain>/`, styles in `ui/styles/`, markup in `ui/templates/`, and release notes in `docs/changelog/`. API reads and writes execute their registered stages; browser mounts use page composer and scoped navigation.
+
+Entrypoints and artwork targets must be regular files inside the checkout, including their resolved paths. Validate these targets before inventory hashes. Developer documents describe public contracts and link manifests for release metadata. Preserve published flow-stage IDs. `mountWhenDirect(mount)` supplies the host navigation AbortSignal; check it after awaited initialization before creating UI resources.
+
+## Behavior
 
 The rules below aggregate the core runtime contract and patterns proven by adjacent Cognis modules.
 
@@ -38,15 +59,6 @@ The rules below aggregate the core runtime contract and patterns proven by adjac
 - Use host toast, error/decision popup, timestamp, theme, font, avatar, and focus contracts. Do not use browser dialogs, page reload navigation, arbitrary status nodes, CSS comments, or copied host CSS.
 - Localize visible and accessibility text in all four XML bundles. Prefer themeable SVG assets to emoji and platform glyphs.
 
-### API, Data, and Configuration
-
-- Validate, normalize, authenticate, and authorize at the boundary before business logic. Return stable errors without internal details.
-- Keep storage behind ctx-provided executors and module-owned stores; parameterize queries and namespace schema objects. Never import a concrete driver.
-- Do not invent a result limit when callers omit one. Validate explicitly requested limits without silently clamping them.
-- Use manifest `ui.preferences` plus the module config API for administrator settings, not a second settings screen. Preserve config across disable/restart and never return stored passwords.
-- Put user secrets in the host keyring. Generate identifiers and secrets with Web Crypto or Node Crypto, never `Math.random()`.
-- Log state changes at `info`, caught failures at `error` with safe structured context, and uncaught failures as fatal. Intentional fallbacks are logged, never silent.
-
 ### Structure and Quality
 
 - Keep server, browser, CLI, documentation, data, tooling, and artwork in `api/`, `ui/`, `cli/`, `docs/`, `data/`, `scripts/` or `tooling/`, and `assets/` respectively.
@@ -54,14 +66,12 @@ The rules below aggregate the core runtime contract and patterns proven by adjac
 - Keep files cohesive and at most 1000 lines. Prefer descriptive names, readable control flow, useful constraint comments, and no obsolete compatibility shims.
 - Tests run standalone with local ctx fakes and cover public APIs, capabilities, flows, authorization, localization, lifecycle, and manifest integrity.
 
-### Release Checklist
+## Security
 
-1. Review dependency UUIDs, required capabilities, route access, metadata, translations, artwork, and secret handling.
-2. Synchronize the manifest, package, and lockfile versions for contract, code, schema, or API changes.
-3. Run `npm install`, `npm run lint`, and `npm test`.
-4. Run `npm run manifest:hashes` after the final shipped-file edit, then `npm run check:manifest` and `git diff --check`.
-5. For non-template modules, add the four localized `docs/changelog/<branch>.<lang>.md` files and finish their commit provenance without digesting changelogs.
+Showcase reads and writes require host authentication. Item persistence is confined to its own store through the injected database capability; handlers validate input before executing their declared flows. The example does not grant access to another module’s data.
 
-Start from this template for every new external module. Generate a new product UUID once, replace example metadata and namespaces, and retain AGENTS.md plus validation tools. Domain routes live in `api/routes/<domain>/`, styles in `ui/styles/`, markup in `ui/templates/`, and release notes in `docs/changelog/`. API reads and writes execute their registered stages; browser mounts use page composer and scoped navigation.
+## Reference
 
-Entrypoints and artwork targets must be regular files inside the checkout, including their resolved paths. Validate these targets before inventory hashes. Developer documents describe public contracts and link manifests for release metadata. Preserve published flow-stage IDs. `mountWhenDirect(mount)` supplies the host navigation AbortSignal; check it after awaited initialization before creating UI resources.
+- [manifest.json](https://github.com/Cognis-Labs-HQ/cognis-module-template/blob/HEAD/manifest.json)
+- [bootstrap.js](https://github.com/Cognis-Labs-HQ/cognis-module-template/blob/HEAD/bootstrap.js)
+- [Cognis](https://github.com/Cognis-Labs-HQ/Cognis/blob/HEAD/src/docs/modules/external/TECHNICAL.en.md)

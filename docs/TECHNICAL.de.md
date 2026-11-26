@@ -1,16 +1,37 @@
-# Vorlage für externe Module
+# Technische Referenz
+
+Öffentliche Schnittstellen, Konfiguration und Lebenszyklus von Modulvorlage.
+
+## Schnittstellen
 
 Erstellen Sie jedes neue externe Cognis-Modul aus diesem Repository. Das installierbare Beispiel zeigt UI, API, Datenbank, CLI, Fähigkeiten, Flows, Lokalisierung, Lebenszyklustests und Paketintegrität. Ersetzen Sie Beispielidentität und Inhalte, behalten Sie Beitragsstandard und Prüfungen.
 
-## Anwendungsbeispiele
+## Konfiguration
 
-- Öffnen Sie nach der Aktivierung `/showcase`, um die lokalisierte Page-Composer-Oberfläche zu verwenden.
-- Führen Sie `cognisctl modules:module-template:list` aus, um dieselbe authentifizierte API über die CLI zu nutzen.
-- Lösen Sie `module-template:listItems` über `ctx` auf, statt Modulinterna zu importieren.
-- Erweitern Sie den Flow `module-template:listItems` durch eine benannte, entfernbare Stufe.
-- Deaktivieren und reaktivieren Sie das Modul, um wiederholbare Registrierungen zu prüfen.
+Die Beispielseite besitzt kein Modulpräferenzformular. Ihr Datenspeicher nutzt den injizierten `db:executor`; `requires` und `requiresCapabilities` definieren Installationsvoraussetzungen. Neue Produkte ersetzen die Beispielidentität einmal und behalten ihre eigene UUID.
 
-## Technische Spezifikation
+### API, Daten und Konfiguration
+
+- Validieren, normalisieren, authentifizieren und autorisieren Sie an der Grenze vor der Geschäftslogik. Antworten verwenden stabile Fehler ohne interne Details.
+- Speicherzugriff bleibt hinter `ctx`-Executors und moduleigenen Stores; Abfragen sind parametrisiert und Schemaobjekte namensräumlich getrennt. Keine konkreten Treiber importieren.
+- Erfinden Sie kein Ergebnislimit, wenn der Aufrufer keines angibt. Explizite Limits werden validiert, nicht still begrenzt.
+- Nutzen Sie Manifest-`ui.preferences` und die Modulkonfigurations-API statt einer zweiten Einstellungsseite. Konfiguration übersteht Deaktivierung/Neustart; gespeicherte Passwörter werden nie zurückgegeben.
+- Benutzerspezifische Geheimnisse gehören in den Host-Keyring. IDs und Geheimnisse entstehen mit Web Crypto oder Node Crypto, nie mit `Math.random()`.
+- Protokollieren Sie Zustandsänderungen als `info`, abgefangene Fehler als `error` mit sicheren strukturierten Daten und unbehandelte Fehler als fatal. Beabsichtigte Fallbacks bleiben nie still.
+
+### Freigabe-Checkliste
+
+1. Prüfen Sie Abhängigkeits-UUIDs, erforderliche Capabilities, Routenzugriff, Metadaten, Übersetzungen, Artwork und Geheimnisbehandlung.
+2. Synchronisieren Sie bei Vertrags-, Code-, Schema- oder API-Änderungen Manifest-, Paket- und Lockfile-Version.
+3. Führen Sie `npm install`, `npm run lint` und `npm test` aus.
+4. Führen Sie nach der letzten ausgelieferten Dateiänderung `npm run manifest:hashes`, danach `npm run check:manifest` und `git diff --check` aus.
+5. Fügen Sie bei Nicht-Vorlagenmodulen vier lokalisierte `docs/changelog/<branch>.<lang>.md` hinzu und vervollständigen Sie deren Commit-Provenienz ohne Changelog-Digests.
+
+Jedes neue externe Modul beginnt mit dieser Vorlage. Einmalig eine eigene Produkt-UUID erzeugen, Beispielmetadaten und Namensräume ersetzen, AGENTS.md und Prüfwerkzeuge behalten. Domänenrouten liegen in `api/routes/<domain>/`, Styles in `ui/styles/`, Markup in `ui/templates/` und Release-Notizen in `docs/changelog/`. API-Lese- und Schreibaktionen durchlaufen registrierte Stufen; Browserseiten nutzen Page Composer und begrenzte Navigation.
+
+Einstiegspunkte und Bildziele müssen reguläre Dateien innerhalb des Checkouts sein, auch nach Pfadauflösung. Diese Ziele werden vor Inventar-Hashes geprüft. Entwicklerdokumente beschreiben öffentliche Verträge und verweisen für Veröffentlichungsmetadaten auf Manifeste. Veröffentlichte Flow-Stage-IDs bleiben erhalten. `mountWhenDirect(mount)` liefert das Navigations-AbortSignal des Hosts; es wird nach asynchroner Initialisierung vor der Erstellung von UI-Ressourcen geprüft.
+
+## Verhalten
 
 Die folgenden Regeln bündeln den Core-Laufzeitvertrag und in benachbarten Cognis-Modulen bewährte Muster.
 
@@ -38,15 +59,6 @@ Die folgenden Regeln bündeln den Core-Laufzeitvertrag und in benachbarten Cogni
 - Nutzen Sie Host-Verträge für Toasts, Fehler-/Entscheidungsdialoge, Zeitstempel, Theme, Schrift, Avatar und Fokus. Keine Browserdialoge, Reload-Navigation, beliebigen Statusknoten, CSS-Kommentare oder kopierten Host-Stile.
 - Lokalisieren Sie sichtbare und barrierefreie Texte in allen vier XML-Paketen. Bevorzugen Sie themefähige SVGs gegenüber Emoji und Plattformglyphen.
 
-### API, Daten und Konfiguration
-
-- Validieren, normalisieren, authentifizieren und autorisieren Sie an der Grenze vor der Geschäftslogik. Antworten verwenden stabile Fehler ohne interne Details.
-- Speicherzugriff bleibt hinter `ctx`-Executors und moduleigenen Stores; Abfragen sind parametrisiert und Schemaobjekte namensräumlich getrennt. Keine konkreten Treiber importieren.
-- Erfinden Sie kein Ergebnislimit, wenn der Aufrufer keines angibt. Explizite Limits werden validiert, nicht still begrenzt.
-- Nutzen Sie Manifest-`ui.preferences` und die Modulkonfigurations-API statt einer zweiten Einstellungsseite. Konfiguration übersteht Deaktivierung/Neustart; gespeicherte Passwörter werden nie zurückgegeben.
-- Benutzerspezifische Geheimnisse gehören in den Host-Keyring. IDs und Geheimnisse entstehen mit Web Crypto oder Node Crypto, nie mit `Math.random()`.
-- Protokollieren Sie Zustandsänderungen als `info`, abgefangene Fehler als `error` mit sicheren strukturierten Daten und unbehandelte Fehler als fatal. Beabsichtigte Fallbacks bleiben nie still.
-
 ### Struktur und Qualität
 
 - Server, Browser, CLI, Dokumentation, Daten, Werkzeuge und Artwork gehören jeweils nach `api/`, `ui/`, `cli/`, `docs/`, `data/`, `scripts/` oder `tooling/` und `assets/`.
@@ -54,14 +66,12 @@ Die folgenden Regeln bündeln den Core-Laufzeitvertrag und in benachbarten Cogni
 - Dateien bleiben kohärent und höchstens 1000 Zeilen lang. Verwenden Sie aussagekräftige Namen, lesbaren Kontrollfluss, hilfreiche Einschränkungskommentare und keine veralteten Kompatibilitätsschichten.
 - Tests laufen eigenständig mit lokalen `ctx`-Fakes und decken öffentliche APIs, Capabilities, Flows, Autorisierung, Lokalisierung, Lebenszyklus und Manifestintegrität ab.
 
-### Freigabe-Checkliste
+## Sicherheit
 
-1. Prüfen Sie Abhängigkeits-UUIDs, erforderliche Capabilities, Routenzugriff, Metadaten, Übersetzungen, Artwork und Geheimnisbehandlung.
-2. Synchronisieren Sie bei Vertrags-, Code-, Schema- oder API-Änderungen Manifest-, Paket- und Lockfile-Version.
-3. Führen Sie `npm install`, `npm run lint` und `npm test` aus.
-4. Führen Sie nach der letzten ausgelieferten Dateiänderung `npm run manifest:hashes`, danach `npm run check:manifest` und `git diff --check` aus.
-5. Fügen Sie bei Nicht-Vorlagenmodulen vier lokalisierte `docs/changelog/<branch>.<lang>.md` hinzu und vervollständigen Sie deren Commit-Provenienz ohne Changelog-Digests.
+Lesen und Schreiben der Beispielseite benötigen Hostauthentifizierung. Einträge liegen ausschließlich im eigenen Speicher über die injizierte Datenbankfähigkeit. Handler validieren Eingaben vor ihren deklarierten Abläufen; das Beispiel gewährt keinen Zugriff auf fremde Moduldaten.
 
-Jedes neue externe Modul beginnt mit dieser Vorlage. Einmalig eine eigene Produkt-UUID erzeugen, Beispielmetadaten und Namensräume ersetzen, AGENTS.md und Prüfwerkzeuge behalten. Domänenrouten liegen in `api/routes/<domain>/`, Styles in `ui/styles/`, Markup in `ui/templates/` und Release-Notizen in `docs/changelog/`. API-Lese- und Schreibaktionen durchlaufen registrierte Stufen; Browserseiten nutzen Page Composer und begrenzte Navigation.
+## Referenz
 
-Einstiegspunkte und Bildziele müssen reguläre Dateien innerhalb des Checkouts sein, auch nach Pfadauflösung. Diese Ziele werden vor Inventar-Hashes geprüft. Entwicklerdokumente beschreiben öffentliche Verträge und verweisen für Veröffentlichungsmetadaten auf Manifeste. Veröffentlichte Flow-Stage-IDs bleiben erhalten. `mountWhenDirect(mount)` liefert das Navigations-AbortSignal des Hosts; es wird nach asynchroner Initialisierung vor der Erstellung von UI-Ressourcen geprüft.
+- [manifest.json](https://github.com/Cognis-Labs-HQ/cognis-module-template/blob/HEAD/manifest.json)
+- [bootstrap.js](https://github.com/Cognis-Labs-HQ/cognis-module-template/blob/HEAD/bootstrap.js)
+- [Cognis](https://github.com/Cognis-Labs-HQ/Cognis/blob/HEAD/src/docs/modules/external/TECHNICAL.en.md)
