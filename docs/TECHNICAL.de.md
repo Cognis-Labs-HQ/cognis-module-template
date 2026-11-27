@@ -33,6 +33,8 @@ Einstiegspunkte und Bildziele müssen reguläre Dateien innerhalb des Checkouts 
 
 ## Verhalten
 
+Die Beispielseite deklariert `gridSize: { default: [12, 4], min: [4, 3], max: "full" }`, um die verfügbare Inhaltszeile bei unterschiedlichen Bildschirmgrößen zu füllen. Der Host-Composer steuert die Anordnung auf schmalen Bildschirmen und das Inhaltswachstum. Der Seitenkontext liefert einen lokalisierten Titel und eine einleitende Unterzeile. Abgeleitete Module wählen zu ihrem Inhalt passende Standard- und Mindestmaße und behalten den Layoutvertrag des Hosts bei.
+
 Die folgenden Regeln bündeln den Core-Laufzeitvertrag und in benachbarten Cognis-Modulen bewährte Muster.
 
 ### Repository- und Manifestvertrag

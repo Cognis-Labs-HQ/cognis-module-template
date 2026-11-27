@@ -2,7 +2,7 @@
     "id": "module-template",
     "uuid": "cc810afb-4fe6-5ef7-8f0b-e23676e01db3",
     "name": "module.module.template.name",
-    "version": "1.0.14",
+    "version": "1.0.15",
     "class": "extension",
     "template": true,
     "coreApiVersion": "v1",
@@ -240,19 +240,19 @@
         },
         {
             "path": "docs/TECHNICAL.de.md",
-            "sha256": "7da3ad570dae26fab527732e8976c1e40859b6d9d7f86fdb1e05b0c08ac2df61"
+            "sha256": "096233c2fbbe62c5c51eede4400e30f61a749936950a79a56c8b678d574b68df"
         },
         {
             "path": "docs/TECHNICAL.en.md",
-            "sha256": "d30266622802f480e50cf77ffffb94591e4eed429effe338cbcfe558070ac876"
+            "sha256": "49b895ac24bb08376a83b89ee2f91d9cb500399100d4ee02c686332ce5c0079f"
         },
         {
             "path": "docs/TECHNICAL.id.md",
-            "sha256": "0538bf09ad0919165af14613acf8f2d74f7c3879888bc86f597197f21dc67df2"
+            "sha256": "05770bb67aae854b0b7ba30f13365e3616330631678913520e72e49f220895b6"
         },
         {
             "path": "docs/TECHNICAL.ja.md",
-            "sha256": "1f754aad40f45d107a28be67969e615175fbcf2fba20deed957efb741a4e6267"
+            "sha256": "fc63fa7ad099dff0e76c927913a52cfc2b161de8a1e8facf13b6b20359664392"
         },
         {
             "path": "docs/USAGE.de.md",
@@ -272,11 +272,11 @@
         },
         {
             "path": "package-lock.json",
-            "sha256": "5003230bc6fce631a3608d25f6c0d5369d4ebb0fc62a1145f240a37bd234ea1c"
+            "sha256": "2a9de5398abe4f1136468af967c11210d25e9414027dbf9a88b45bd560364d42"
         },
         {
             "path": "package.json",
-            "sha256": "1ebab1625451893e49038b1bf4a3f003c98d5822f96799fa79bb6e18e0812485"
+            "sha256": "f7e6e4c4b8e42fa54b99f6c4d5c52d250dced77b88d1ff1428d72f202445eac2"
         },
         {
             "path": "routes.json",
@@ -324,7 +324,7 @@
         },
         {
             "path": "ui/app.js",
-            "sha256": "2d9511c1d2b3d72cf672b3fedecd406a3eca664f5e7b01c51ba193b48f808ff7"
+            "sha256": "2535993c390877b405efc0f42dec9f8c17272ce7d2496f135ed96af85b9f1a72"
         },
         {
             "path": "ui/index.html",

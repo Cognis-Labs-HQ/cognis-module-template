@@ -21,6 +21,8 @@ Halaman contoh tidak memiliki formulir preferensi modul. Penyimpanan item memaka
 
 ## Perilaku
 
+Halaman contoh mendeklarasikan `gridSize: { default: [12, 4], min: [4, 3], max: "full" }` agar mengisi baris konten yang tersedia pada berbagai ukuran layar. Composer host mengatur penumpukan pada layar sempit dan pertumbuhan konten. Konteks halaman menyediakan judul dan subjudul pengantar yang dilokalkan. Modul turunan sebaiknya memilih ukuran bawaan dan minimum sesuai kontennya sambil mempertahankan kontrak tata letak host.
+
 Aturan berikut merangkum kontrak runtime inti dan pola yang telah terbukti pada modul Cognis yang berdekatan.
 
 ### Kontrak Repositori dan Manifes

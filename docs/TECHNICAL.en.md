@@ -33,6 +33,8 @@ Entrypoints and artwork targets must be regular files inside the checkout, inclu
 
 ## Behavior
 
+The showcase declares `gridSize: { default: [12, 4], min: [4, 3], max: "full" }` to fill the available content row across screen sizes. The host Composer owns narrow-screen stacking and content growth. Page context supplies both the localized title and introductory subtitle; derived modules should choose defaults and minima for their own content while retaining the host layout contract.
+
 The rules below aggregate the core runtime contract and patterns proven by adjacent Cognis modules.
 
 ### Repository and Manifest Contract

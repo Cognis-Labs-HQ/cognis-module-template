@@ -97,13 +97,16 @@ export async function mount(root, { signal: mountSignal } = {}) {
     const composer = createPageComposer(root, {
         i18n,
         allowCustomization: false,
-        pageContext: { title: i18n.t("module.module.template.title") },
+        pageContext: {
+            title: i18n.t("module.module.template.title"),
+            subtitle: i18n.t("module.module.template.intro"),
+        },
         elements: [
             {
                 id: "module-template-showcase",
                 label: i18n.t("module.module.template.title"),
                 pinned: true,
-                gridSize: { default: [12, 4] },
+                gridSize: { default: [12, 4], min: [4, 3], max: "full" },
                 render: () => template,
             },
         ],
