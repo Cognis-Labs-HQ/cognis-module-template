@@ -40,8 +40,8 @@ function createContext(registrations) {
             exists() {
                 return false;
             },
-            extend(...args) {
-                registrations.extensions.push(args);
+            extend(...argumentsList) {
+                registrations.extensions.push(argumentsList);
             },
         },
         log() {},

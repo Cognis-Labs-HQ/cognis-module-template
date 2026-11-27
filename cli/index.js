@@ -14,8 +14,8 @@ export function registerCommands({ register, apiGet, apiPost }) {
     );
     register(
         "modules:module-template:create",
-        async ({ args, apiBaseUrl, getApiToken }) => {
-            const title = args.join(" ").trim();
+        async ({ args: argumentsList, apiBaseUrl, getApiToken }) => {
+            const title = argumentsList.join(" ").trim();
             if (!title)
                 throw new Error(
                     "Usage: cognisctl modules:module-template:create <title>",
