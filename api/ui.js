@@ -1,7 +1,7 @@
 import path from "node:path";
 
 export function registerUi(ctx) {
-    ctx.registerStaticDir("", path.join(ctx.moduleRoot, "ui"));
+    ctx.registerStaticDirectory("", path.join(ctx.moduleRoot, "ui"));
     ctx.registerSpaRoute({
         id: "module-template-showcase",
         pattern: "^/showcase$",

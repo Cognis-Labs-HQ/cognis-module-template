@@ -25,7 +25,7 @@ function createContext(registrations) {
             }
             assert.fail(`Unexpected capability: ${name}`);
         },
-        registerStaticDir() {},
+        registerStaticDirectory() {},
         registerSpaRoute(route) {
             registrations.routes.push(route.base);
         },
