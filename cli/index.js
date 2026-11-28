@@ -14,7 +14,7 @@ export function registerCommands({ register, apiGet, apiPost }) {
     );
     register(
         "modules:module-template:create",
-        async ({ args, apiBaseUrl, getApiToken }) => {
+        async ({ args: args, apiBaseUrl, getApiToken }) => {
             const title = args.join(" ").trim();
             if (!title)
                 throw new Error(

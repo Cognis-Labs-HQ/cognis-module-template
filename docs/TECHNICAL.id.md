@@ -1,16 +1,27 @@
-# Templat Modul Eksternal
+# Referensi Teknis
+
+Antarmuka publik, konfigurasi, dan siklus hidup Templat Modul.
+
+## Antarmuka
 
 Buat setiap modul Cognis eksternal baru dari repositori ini. Contoh yang dapat dipasang menunjukkan UI, API, basis data, CLI, kapabilitas, alur, pelokalan, uji siklus hidup dan integritas paket. Ganti identitas serta konten contoh sambil mempertahankan standar dan pemeriksaannya.
 
-## Contoh Penggunaan
+## Konfigurasi
 
-- Buka `/showcase` setelah modul diaktifkan untuk memakai UI page composer yang dilokalkan.
-- Jalankan `cognisctl modules:module-template:list` untuk memakai API terautentikasi yang sama melalui CLI.
-- Gunakan `module-template:listItems` melalui `ctx`, bukan dengan mengimpor internal modul.
-- Perluas alur `module-template:listItems` melalui tahap bernama yang dapat dilepas.
-- Nonaktifkan lalu aktifkan kembali modul untuk memverifikasi registrasi tercakup dapat diulang.
+Halaman contoh tidak memiliki formulir preferensi modul. Penyimpanan item memakai `db:executor` yang diinjeksikan; `requires` dan `requiresCapabilities` menentukan prasyarat pemasangan. Produk baru mengganti identitas contoh sekali dan mempertahankan UUID sendiri.
 
-## Spesifikasi Teknis
+### API, Data, dan Konfigurasi
+
+- Validasi, normalisasi, autentikasi, dan otorisasi di batas sebelum logika bisnis. Kembalikan galat stabil tanpa detail internal.
+- Simpan data di balik executor dari `ctx` dan store milik modul; parameterkan kueri dan beri namespace pada objek skema. Jangan mengimpor driver konkret.
+- Jangan membuat batas hasil saat pemanggil tidak memberikannya. Validasi batas eksplisit tanpa membatasinya diam-diam.
+- Gunakan `ui.preferences` manifes dan API konfigurasi modul untuk pengaturan administrator, bukan layar pengaturan kedua. Pertahankan konfigurasi saat nonaktif/mulai ulang dan jangan pernah mengembalikan kata sandi tersimpan.
+- Simpan rahasia pengguna di keyring host. Buat ID dan rahasia dengan Web Crypto atau Node Crypto, bukan `Math.random()`.
+- Catat perubahan keadaan pada `info`, kegagalan tertangkap pada `error` dengan konteks terstruktur yang aman, dan kegagalan tak tertangkap sebagai fatal. Fallback yang disengaja selalu dicatat.
+
+## Perilaku
+
+Halaman contoh mendeklarasikan `gridSize: { default: [12, 4], min: [4, 3], max: "full" }` agar mengisi baris konten yang tersedia pada berbagai ukuran layar. Composer host mengatur penumpukan pada layar sempit dan pertumbuhan konten. Konteks halaman menyediakan judul dan subjudul pengantar yang dilokalkan. Modul turunan sebaiknya memilih ukuran bawaan dan minimum sesuai kontennya sambil mempertahankan kontrak tata letak host.
 
 Aturan berikut merangkum kontrak runtime inti dan pola yang telah terbukti pada modul Cognis yang berdekatan.
 
@@ -38,15 +49,6 @@ Aturan berikut merangkum kontrak runtime inti dan pola yang telah terbukti pada 
 - Gunakan kontrak host untuk toast, popup galat/keputusan, stempel waktu, tema, font, avatar, dan fokus. Jangan gunakan dialog browser, navigasi muat ulang, simpul status sembarang, komentar CSS, atau salinan CSS host.
 - Lokalkan teks terlihat dan aksesibilitas dalam keempat bundel XML. Pilih SVG yang dapat mengikuti tema daripada emoji dan glif platform.
 
-### API, Data, dan Konfigurasi
-
-- Validasi, normalisasi, autentikasi, dan otorisasi di batas sebelum logika bisnis. Kembalikan galat stabil tanpa detail internal.
-- Simpan data di balik executor dari `ctx` dan store milik modul; parameterkan kueri dan beri namespace pada objek skema. Jangan mengimpor driver konkret.
-- Jangan membuat batas hasil saat pemanggil tidak memberikannya. Validasi batas eksplisit tanpa membatasinya diam-diam.
-- Gunakan `ui.preferences` manifes dan API konfigurasi modul untuk pengaturan administrator, bukan layar pengaturan kedua. Pertahankan konfigurasi saat nonaktif/mulai ulang dan jangan pernah mengembalikan kata sandi tersimpan.
-- Simpan rahasia pengguna di keyring host. Buat ID dan rahasia dengan Web Crypto atau Node Crypto, bukan `Math.random()`.
-- Catat perubahan keadaan pada `info`, kegagalan tertangkap pada `error` dengan konteks terstruktur yang aman, dan kegagalan tak tertangkap sebagai fatal. Fallback yang disengaja selalu dicatat.
-
 ### Struktur dan Kualitas
 
 - Tempatkan server, browser, CLI, dokumentasi, data, tooling, dan karya seni masing-masing di `api/`, `ui/`, `cli/`, `docs/`, `data/`, `scripts/` atau `tooling/`, dan `assets/`.
@@ -65,3 +67,17 @@ Aturan berikut merangkum kontrak runtime inti dan pola yang telah terbukti pada 
 Setiap modul eksternal baru dimulai dari templat ini. Buat UUID produk baru sekali, ganti metadata dan namespace contoh, dan pertahankan AGENTS.md serta alat validasi. Rute domain ada di `api/routes/<domain>/`, style di `ui/styles/`, markup di `ui/templates/`, dan catatan rilis di `docs/changelog/`. Baca dan tulis API menjalankan tahap terdaftar; halaman browser memakai page composer dan navigasi terbatas.
 
 Titik masuk dan target gambar harus berupa file reguler di dalam checkout, termasuk setelah resolusi jalur. Target ini divalidasi sebelum hash inventaris. Dokumen pengembang menjelaskan kontrak publik dan merujuk manifes untuk metadata rilis. ID tahap alur yang sudah diterbitkan dipertahankan. `mountWhenDirect(mount)` menyediakan AbortSignal navigasi host; periksa setelah inisialisasi asinkron sebelum membuat sumber daya UI.
+
+## Keamanan
+
+Pembacaan dan penulisan contoh memerlukan autentikasi host. Penyimpanan item terbatas pada penyimpanan sendiri melalui kapabilitas basis data yang diinjeksikan; handler memvalidasi masukan sebelum menjalankan alur. Contoh tidak memberi akses ke data modul lain.
+
+## Referensi
+
+- [manifest.json](https://github.com/Cognis-Labs-HQ/cognis-module-template/blob/HEAD/manifest.json)
+- [bootstrap.js](https://github.com/Cognis-Labs-HQ/cognis-module-template/blob/HEAD/bootstrap.js)
+- [Cognis](https://github.com/Cognis-Labs-HQ/Cognis/blob/HEAD/src/docs/modules/external/TECHNICAL.en.md)
+
+### Validasi nama
+
+`npm test` memeriksa nama binding dengan detektor pohon sintaks lokal, termasuk bootstrap, skrip, pengujian, dan fixture. Kesalahan penguraian menggagalkan validasi. Fixture regresi mencakup deklarasi, parameter, anggota privat, penegasan tipe TypeScript, dan nama khusus tipe yang sah. Lihat [standar penamaan host](https://github.com/Cognis-Labs-HQ/Cognis/blob/HEAD/src/docs/standard/TECHNICAL.id.md#nama-binding) untuk kebijakan bersama. Istilah lazim seperti `args`, `db`, dan LDAP `dn` diperbolehkan sebagai nama mandiri. Nama gabungan, termasuk tipe dan metode upstream, memakai kata lengkap seperti `DatabaseExecutor`, `createDatabaseExecutor`, dan `baseDistinguishedName`; API milik komponen memakai satu nama kanonis pada deklarasi, ekspor, dan pemanggil. Alias ekspor yang hanya mengganti nama menggagalkan validasi. Token satuan ukuran (`ms`, `sec`, `px`, `rad`, `deg`) tetap disingkat dalam nama gabungan seperti `INVITE_EXPIRY_MS` dan `widthPx`; singkatan gabungan lainnya tetap diperluas.
